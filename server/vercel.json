@@ -14,7 +14,7 @@
     ],
     "headers": [
       {
-        "source": "/api/contacts", 
+        "source": "https://baylerview-server.vercel.app/api/contacts", 
         "headers": [
           {
             "key": "Access-Control-Allow-Origin",
