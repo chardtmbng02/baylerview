@@ -1,24 +1,32 @@
+import axios from "axios";
 export const NewsletterSection = () => {
   function postData() {
     const inputEmail = document.getElementById("email").value;
 
+    // URL endpoint for the POST request
+    const url = "https://baylerview-server.vercel.app/api/newsletters";
+
+    // Data to be sent in the request body
     const data = {
       email: inputEmail,
     };
 
-    fetch("https://baylerview-server.vercel.app/api/newsletters", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result);
+    // Headers (optional)
+    const headers = {
+      "Content-Type": "application/json", // Adjust the content type based on your API requirements
+      // Add any other headers if required by the API
+    };
+
+    // Making the POST request using Axios
+    axios
+      .post(url, data, { headers })
+      .then((response) => {
+        // Handle the response data
+        console.log("Response:", response.data);
       })
       .catch((error) => {
-        console.error("Error:", error);
+        // Handle any errors that occurred during the request
+        console.error("Error:", error.message);
       });
   }
   return (
