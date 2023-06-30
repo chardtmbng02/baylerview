@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./HeroSection.css";
 import ReactPlayer from "react-player";
-import heroVideo from "../../assets/hero-video/video3.mp4";
+import heroVideo from "../../assets/hero-video/video.mp4";
 
 export const HeroSection = () => {
   return (
