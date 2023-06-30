@@ -9,7 +9,7 @@ export const ContactSection = () => {
     try {
       // Make a POST request to your API endpoint
       const response = await axios.post(
-        "http://baylerview-server.vercel.app/api/contacts",
+        "https://baylerview-server.vercel.app/api/contacts",
         formData
       );
 
