@@ -2,29 +2,59 @@ import React, { useState } from "react";
 import axios from "axios";
 
 export const ContactSection = () => {
-  const [formData, setFormData] = useState({});
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  // const [formData, setFormData] = useState({});
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
 
-    try {
-      // Make a POST request to your API endpoint
-      const response = await axios.post(
-        "https://baylerview-server.vercel.app/api/contacts",
-        formData
-      );
+  //   try {
+  //     // Make a POST request to your API endpoint
+  //     const response = await axios.post(
+  //       "https://baylerview-server.vercel.app/api/contacts",
+  //       formData
+  //     );
 
-      // Handle the response as needed
-      console.log(response.data);
-      alert("Your message was sent successfully.");
-    } catch (error) {
-      // Handle error
-      console.error(error);
-    }
-  };
+  //     // Handle the response as needed
+  //     console.log(response.data);
+  //     alert("Your message was sent successfully.");
+  //   } catch (error) {
+  //     // Handle error
+  //     console.error(error);
+  //   }
+  // };
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  // const handleChange = (e) => {
+  //   setFormData({ ...formData, [e.target.name]: e.target.value });
+  // };
+
+  function postData() {
+    const inputName = document.getElementById('name').value;
+    const inputEmail = document.getElementById('email').value;
+    const inputMessage = document.getElementById('message').value;
+  
+    const data = {
+      name: inputName,
+      email: inputEmail,
+      message: inputMessage
+    };
+  
+    // fetch("http://localhost:5000/api/contacts", {
+    fetch("https://baylerview-server.vercel.app/api/contacts", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then(response => response.json())
+      .then(result => {
+        console.log(result);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
+
+
 
   return (
     <section className="bg-gray-100 pt-10" id="contact">
@@ -140,7 +170,7 @@ export const ContactSection = () => {
             <div className="card h-fit max-w-6xl p-5 md:p-12" id="form">
               <h2 className="mb-4 text-2xl font-bold">Ready to Get Started?</h2>
 
-              <form id="contactForm" onSubmit={handleSubmit}>
+              <form id="contactForm">
                 <div className="mb-6">
                   <div className="mx-0 mb-1 sm:mb-4">
                     <div className="mx-0 mb-1 sm:mb-4">
@@ -151,7 +181,7 @@ export const ContactSection = () => {
                         placeholder="Your name"
                         className="bg-white mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md sm:mb-0"
                         name="name"
-                        onChange={handleChange}
+                        
                       />
                     </div>
                     <div className="mx-0 mb-1 sm:mb-4">
@@ -162,7 +192,7 @@ export const ContactSection = () => {
                         placeholder="Your email address"
                         className="bg-white mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md sm:mb-0"
                         name="email"
-                        onChange={handleChange}
+                        
                       />
                     </div>
                   </div>
@@ -174,12 +204,13 @@ export const ContactSection = () => {
                       rows="5"
                       placeholder="Write your message..."
                       className="bg-white mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md sm:mb-0"
-                      onChange={handleChange}
+                      
                     ></textarea>
                   </div>
                 </div>
                 <div className="text-center">
                   <button
+                  onClick={postData}
                     type="submit"
                     className="w-full bg-red-600 hover:bg-red-500 text-white px-6 py-3 font-xl rounded-md sm:mb-0"
                   >
