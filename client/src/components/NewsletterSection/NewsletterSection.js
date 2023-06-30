@@ -1,18 +1,27 @@
-import { useState } from "react";
 
 export const NewsletterSection = () => {
-  const [emailValue, setemailValue] = useState("");
-
-  const handleInputChange = (e) => {
-    setemailValue(e.target.value);
-  };
-
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    setemailValue("");
-  };
-  console.log(emailValue)
-
+  function postData() {
+    const inputEmail = document.getElementById('email').value;
+  
+    const data = {
+      email: inputEmail,
+    };
+  
+    fetch('https://baylerview-server.vercel.app/api/newsletters', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then(response => response.json())
+      .then(result => {
+        console.log(result);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
   return (
     <div className="bg-gray-100 pt-20 font-sans leading-normal tracking-normal">
       <section className="bg-gray-100 py-20">
@@ -30,17 +39,8 @@ export const NewsletterSection = () => {
                   type="email"
                   className="bg-white mr-3 py-2 px-4 w-full rounded-md focus:outline"
                   placeholder="Enter your email"
-                  onSubmit={handleFormSubmit}
-                  onChange={handleInputChange}
-                  value={emailValue}
-
                 />
-                <button
-                  type="submit"
-                  className="bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-500"
-                >
-                  Subscribe
-                </button>
+                <button onClick={postData} type="submit" className="bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-500">Subscribe</button>
               </div>
             </form>
           </div>

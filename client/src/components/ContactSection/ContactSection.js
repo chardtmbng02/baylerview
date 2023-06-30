@@ -1,29 +1,5 @@
-import React, { useState } from "react";
 
 export const ContactSection = () => {
-  // const [formData, setFormData] = useState({});
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     // Make a POST request to your API endpoint
-  //     const response = await axios.post(
-  //       "https://baylerview-server.vercel.app/api/contacts",
-  //       formData
-  //     );
-
-  //     // Handle the response as needed
-  //     console.log(response.data);
-  //     alert("Your message was sent successfully.");
-  //   } catch (error) {
-  //     // Handle error
-  //     console.error(error);
-  //   }
-  // };
-
-  // const handleChange = (e) => {
-  //   setFormData({ ...formData, [e.target.name]: e.target.value });
-  // };
 
   function postData() {
     const inputName = document.getElementById('name').value;
@@ -36,7 +12,6 @@ export const ContactSection = () => {
       message: inputMessage
     };
   
-    // fetch("http://localhost:5000/api/contacts", {
     fetch('https://baylerview-server.vercel.app/api/contacts', {
       method: 'POST',
       headers: {
@@ -47,7 +22,6 @@ export const ContactSection = () => {
       .then(response => response.json())
       .then(result => {
         console.log(result);
-        alert('Your message was sent successfully')
       })
       .catch(error => {
         console.error('Error:', error);
