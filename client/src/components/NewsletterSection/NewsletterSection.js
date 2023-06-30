@@ -7,7 +7,7 @@ export const NewsletterSection = () => {
     const inputEmail = document.getElementById("email").value;
 
     // URL endpoint for the POST request
-    const url = "https://baylerview-server.vercel.app/api/newsletters";
+    const url = "https://baylerview-api.onrender.com/api/newsletters";
 
     // Data to be sent in the request body
     const data = {
