@@ -1,43 +1,53 @@
-const path = require('path');
-const express = require('express');
-const cors = require('cors');
-require('dotenv').config();
+const path = require("path");
+const express = require("express");
+const cors = require("cors");
+require("dotenv").config();
 const port = process.env.PORT || 5000;
-const connectDB = require('./config/db');
+const connectDB = require("./config/db");
 
 connectDB();
 
 const app = express();
 
 //Static Folder
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 
 //Body Parser middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+app.use((req, res, next) => {
+  res.header(
+    "Access-Control-Allow-Origin",
+    "https://baylerview-hotel.vercel.app"
+  ); // or '*' for any origin
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  next();
+});
+
 //cors middleware
 app.use(
   cors({
-    origin: ['http://localhost:5000', 'http://localhost:3000'],
+    origin: ["http://localhost:5000", "http://localhost:3000"],
     credentials: true,
   })
 );
 
 //routes
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
   res.json({
-    message: 'Welcome to Bay-Ler View API',
+    message: "Welcome to Bay-Ler View API",
   });
 });
 
-const roomsRouter = require('./routes/rooms');
-app.use('/api/rooms', roomsRouter);
+const roomsRouter = require("./routes/rooms");
+app.use("/api/rooms", roomsRouter);
 
-const newslettersRouter = require('./routes/newsletters');
-app.use('/api/newsletters', newslettersRouter);
+const newslettersRouter = require("./routes/newsletters");
+app.use("/api/newsletters", newslettersRouter);
 
-const contactsRouter = require('./routes/contacts');
-app.use('/api/contacts', contactsRouter);
+const contactsRouter = require("./routes/contacts");
+app.use("/api/contacts", contactsRouter);
 
 app.listen(port, () => console.log(`Server listening in port ${port}`));
