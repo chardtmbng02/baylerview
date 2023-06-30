@@ -37,7 +37,7 @@ export const ContactSection = () => {
     };
   
     // fetch("http://localhost:5000/api/contacts", {
-    fetch("https://baylerview-server.vercel.app/api/contacts", {
+    fetch('https://baylerview-server.vercel.app/api/contacts', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
