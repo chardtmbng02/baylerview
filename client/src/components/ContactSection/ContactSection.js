@@ -9,16 +9,8 @@ export const ContactSection = () => {
     try {
       // Make a POST request to your API endpoint
       const response = await axios.post(
-        "https://baylerview-server.vercel.app/api/contacts",
-        formData,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*', // Replace with your desired origin or use '*' for all origins
-            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
-            'Access-Control-Allow-Headers': 'Content-Type',
-          },
-        }
+        "http://baylerview-server.vercel.app/api/contacts",
+        formData
       );
 
       // Handle the response as needed
