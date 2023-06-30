@@ -16,14 +16,6 @@ export const ContactSection = () => {
       // Handle the response as needed
       console.log(response.data);
       alert("Your message was sent successfully.");
-      <h1>hello there</h1>
-
-        setFormData ({
-          name:'',
-          email:'',
-          message:'',
-
-        });
     } catch (error) {
       // Handle error
       console.error(error);
@@ -159,7 +151,6 @@ export const ContactSection = () => {
                         placeholder="Your name"
                         className="bg-white mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md sm:mb-0"
                         name="name"
-                        value={formData.name}
                         onChange={handleChange}
                       />
                     </div>
@@ -171,7 +162,6 @@ export const ContactSection = () => {
                         placeholder="Your email address"
                         className="bg-white mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md sm:mb-0"
                         name="email"
-                        value={formData.email}
                         onChange={handleChange}
                       />
                     </div>
@@ -184,7 +174,6 @@ export const ContactSection = () => {
                       rows="5"
                       placeholder="Write your message..."
                       className="bg-white mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md sm:mb-0"
-                      value={formData.message}
                       onChange={handleChange}
                     ></textarea>
                   </div>
