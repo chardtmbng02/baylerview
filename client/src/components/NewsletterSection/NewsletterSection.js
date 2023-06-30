@@ -1,6 +1,8 @@
 import axios from "axios";
 export const NewsletterSection = () => {
-  function postData() {
+  
+  function postData(event) {
+    event.preventDefault();
     const inputEmail = document.getElementById("email").value;
 
     // URL endpoint for the POST request
@@ -9,6 +11,7 @@ export const NewsletterSection = () => {
     // Data to be sent in the request body
     const data = {
       email: inputEmail,
+  
     };
 
     // Headers (optional)
@@ -23,6 +26,7 @@ export const NewsletterSection = () => {
       .then((response) => {
         // Handle the response data
         console.log("Response:", response.data);
+        console.log(data)
       })
       .catch((error) => {
         // Handle any errors that occurred during the request
