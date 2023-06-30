@@ -47,6 +47,7 @@ export const ContactSection = () => {
       .then(response => response.json())
       .then(result => {
         console.log(result);
+        alert('Your message was sent successfully')
       })
       .catch(error => {
         console.error('Error:', error);
