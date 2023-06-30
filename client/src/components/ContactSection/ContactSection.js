@@ -12,7 +12,7 @@ export const ContactSection = () => {
       message: inputMessage
     };
   
-    fetch('./api/contacts', {
+    fetch('https://baylerview-server.vercel.app/api/contacts', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -27,8 +27,6 @@ export const ContactSection = () => {
         console.error('Error:', error);
       });
   }
-
-
 
   return (
     <section className="bg-gray-100 pt-10" id="contact">

@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: false }));
 //cors middleware
 app.use(
   cors({
-    origin: ['http://localhost:5000', 'http://localhost:3000', 'https://baylerview-server.vercel.app' ],
+    origin: ['http://localhost:5000', 'http://localhost:3000'],
     credentials: true,
   })
 );
