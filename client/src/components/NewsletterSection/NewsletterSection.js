@@ -1,6 +1,7 @@
 import axios from "axios";
+
 export const NewsletterSection = () => {
-  
+
   function postData(event) {
     event.preventDefault();
     const inputEmail = document.getElementById("email").value;
@@ -11,13 +12,13 @@ export const NewsletterSection = () => {
     // Data to be sent in the request body
     const data = {
       email: inputEmail,
-  
     };
 
     // Headers (optional)
     const headers = {
       "Content-Type": "application/json", // Adjust the content type based on your API requirements
-      // Add any other headers if required by the API
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
+      "Access-Control-Allow-Origin": "*",
     };
 
     // Making the POST request using Axios
@@ -25,8 +26,7 @@ export const NewsletterSection = () => {
       .post(url, data, { headers })
       .then((response) => {
         // Handle the response data
-        console.log("Response:", response.data);
-        console.log(data)
+        console.log(response.data);
       })
       .catch((error) => {
         // Handle any errors that occurred during the request

@@ -1,7 +1,8 @@
 
 export const ContactSection = () => {
 
-  function postData() {
+  function postData(event) {
+    event.preventDefault();
     const inputName = document.getElementById('name').value;
     const inputEmail = document.getElementById('email').value;
     const inputMessage = document.getElementById('message').value;
