@@ -2,10 +2,10 @@
   "name": "baylerviewhotel",
   "version": "1.0.0",
   "description": "This is a Room Reservation Website for Bay-Ler View Hotel in Baler Aurora.",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "author": "Murk Technology Solutions",
   "license": "MIT",
