@@ -33,7 +33,7 @@ router.post('/', async (req, res) => {
       position: req.body.position,
       message: req.body.message,
       ratings: req.body.ratings,
- 
+      testimonial_status: req.body.testimonial_status,
     });
   
     try {

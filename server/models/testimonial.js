@@ -18,6 +18,9 @@ const TestimonialSchema = new mongoose.Schema({
   ratings: {
     type: String,
   },
+  testimonial_status: {
+    type: String,
+  },
   date: {
     type: Date,
     default: Date.now,
