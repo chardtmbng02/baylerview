@@ -2,7 +2,7 @@ import { useTitle } from "../Hooks/useTitle";
 import { useEffect } from "react";
 import { NavigationBar } from "../components/Navigation/NavigationBar";
 import { CheckBook } from "../components/Forms/CheckBook";
-import { RoomSection } from "../components/RoomSection/RoomSection";
+import { HomeFeaturedRoom } from "../components/RoomSection/HomeFeaturedRoom";
 import { Footer } from "../components/Footer/Footer";
 import { HeroSection } from "../components/HeroSection/HeroSection";
 import { ContactSection } from "../components/ContactSection/ContactSection";
@@ -18,7 +18,7 @@ export const Home = () => {
     <NavigationBar />
     <HeroSection />
     <CheckBook />
-    <RoomSection />
+    <HomeFeaturedRoom />
     <ContactSection />
     <Footer />
 

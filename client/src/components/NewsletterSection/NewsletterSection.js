@@ -16,9 +16,7 @@ export const NewsletterSection = () => {
 
     // Headers (optional)
     const headers = {
-      "Content-Type": "application/json", // Adjust the content type based on your API requirements
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
-      "Access-Control-Allow-Origin": "*",
+      "Content-Type": "application/json",
     };
 
     // Making the POST request using Axios

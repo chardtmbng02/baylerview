@@ -22,14 +22,6 @@
     margin-right: 400px;
   }
   
-  .nav-header-solid {
-    background-color: #fcf4e0;
-  }
-  
-  .nav-header-transparent {
-    background-color: transparent;
-  }
-  
   .navigation a {
     margin: 0 1rem;
     color: #000;
@@ -75,10 +67,6 @@
     
     .mr-img{
       margin-right: 300px;
-    }
-     
-    .nav-header-transparent {
-      background-color: transparent;
     }
     
     .navigation a {
@@ -131,13 +119,11 @@
       align-items: center;
       justify-content: center;
       gap: 14px;
-      background-color: #fef9c3;
       transition: 0.5s;
     }
   
     .nav-header .responsive_nav {
       transform: translateY(100vh);
-      /* background: url("../../assets/Header-Images/bannerbackground-blur-2.png"); */
     }
   
     .navigation .nav-close-btn {

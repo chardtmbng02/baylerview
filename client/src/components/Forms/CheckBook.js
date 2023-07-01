@@ -1,47 +1,57 @@
-import { Link } from "react-router-dom";
 import "../Forms/CheckBook.css";
 export const CheckBook = () => {
+
+  const handleCheckAvailability = () => {
+    // Add your logic for checking availability here
+    console.log("Checking availability...");
+  };
+
   return (
-    <section className="p-10 bg-yellow-100">
-      <div className="flex flex-wrap items-center justify-center">
-      {/* <p className="text-xl text-gray-600 text-center">Book Your Room</p> */}
-        <form className="flex flex-wrap items-center justify-center">
-          
-          <input
-            id="date"
-            className="wbookform border-2 border-gray-300 rounded m-3 px-3 py-2 w-30"
-            type="date"
-            placeholder="Check In Date"
-          />
-
-          <input
-            id="date"
-            className="wbookform border-2 border-gray-300 rounded m-3 px-3 py-2 w-30"
-            type="date"
-            placeholder="Check In Date"
-          />
-
-          <input
-            className="wbookform border-2 border-gray-300 rounded m-3 px-3 py-2"
-            type="number"
-            placeholder="Adults"
-          />
-
-          <input
-            className="text-black wbookform border-2 border-gray-300 rounded m-3 px-3 py-2"
-            type="number"
-            placeholder="Children"
-          />
-          <Link to="/reserveroom">
-            <button
+ 
+    <section className="bg-yellow-100">
+    <div className="mx-10 flex flex-col items-center md:flex-row md:justify-center bg-yellow-100">
+      <div className="mb-4 md:mr-4 w-full md:w-auto">
+        <label htmlFor="check-in" className="block text-gray-700 font-medium">Check-in</label>
+        <input
+          type="date"
+          id="check-in"
+          className="bg-white w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+      <div className="mb-4 md:mr-4 w-full md:w-auto">
+        <label htmlFor="check-out" className="block text-gray-700 font-medium">Check-out</label>
+        <input
+          type="date"
+          id="check-out"
+          className="bg-white w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+      <div className="mb-4 md:mr-4 w-full md:w-auto">
+        <label htmlFor="adults" className="block text-gray-700 font-medium">Adults</label>
+        <input
+          type="number"
+          id="adults"
+          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+      <div className="mb-4 w-full md:w-auto">
+        <label htmlFor="children" className="block text-gray-700 font-medium">Children</label>
+        <input
+          type="number"
+          id="children"
+          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+      <button
               type="button"
               className="m-3 py-3 px-8 text-sm bg-red-600 hover:bg-red-500 rounded text-white "
+              onClick={handleCheckAvailability}
             >
               Check Availability
             </button>
-          </Link>
-        </form>
-      </div>
+    </div>
     </section>
+
+
   );
 };

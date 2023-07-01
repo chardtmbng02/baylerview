@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import "../Navigation/NavigationBar.css";
-import Logo  from "../../assets/Logo/logo-main.png";
+import Logo from "../../assets/Logo/logo-main.png";
 
 import React from "react";
 
@@ -31,27 +31,26 @@ export const NavigationBar = () => {
     <header
       className={
         changeHeader
-          ? "nav-header bg-yellow-100 shadow-xl transition duration-500"
+          ? "nav-header bg-yellow-100 shadow-lg transition duration-500"
           : "nav-header bg-yellow-100 transition duration-500"
       }
     >
-
-<div className="mx-auto">
+      <div className="mx-auto">
         <Link to="/">
-          <img
-            className="w-36 cursor-pointer mr-img"
-            src={Logo}
-            alt="bvhlg"
-          />
+          <img className="w-36 cursor-pointer mr-img" src={Logo} alt="bvhlg" />
         </Link>
-        <nav className="navigation" ref={navRef}>
+        <nav className="navigation bg-yellow-100" ref={navRef}>
           <Link to="/">Home</Link>
           {/* <Link to="/about">About Us</Link> */}
           <Link to="/rooms">Rooms</Link>
           <Link to="/experiences">Experiences</Link>
           <Link to="/">
-            <button type="button" className="bg-red-600 text-white py-3 px-6 rounded-lg shadow-lg hover:bg-red-500 transition duration-200">Sign In
-                </button>
+            <button
+              type="button"
+              className="bg-red-600 text-white py-3 px-6 rounded-lg shadow-lg hover:bg-red-500 transition duration-200"
+            >
+              Book Now
+            </button>
           </Link>
           <button className="nav-btn nav-close-btn" onClick={showNavbar}>
             <FaTimes />
@@ -61,12 +60,6 @@ export const NavigationBar = () => {
           <FaBars />
         </button>
       </div>
-      
-
-
     </header>
   );
 };
-
-
-

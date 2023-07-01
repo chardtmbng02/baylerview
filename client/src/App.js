@@ -9,7 +9,7 @@ import { Newsletter } from "./pages/Newsletter";
 import { DevTeam } from "./pages/DevTeam";
 import { Playground } from "./pages/Playground";
 import { ErrorMessage } from "./components/ErrorMessage";
-import { RoomReservation } from "./pages/RoomReservation";
+import { RoomsList } from "./pages/RoomsList";
 import { AboutUs } from "./pages/AboutUs";
 import { Experience } from "./pages/Experience";
 
@@ -31,8 +31,7 @@ function App() {
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/newsletter" element={<Newsletter />} />
           <Route path="/teamdevelopment" element={<DevTeam />} />
-          <Route path="/reserveroom" element={<RoomReservation />} />
-          <Route path="/rooms" element={<RoomReservation />} />
+          <Route path="/rooms" element={<RoomsList />} />
           <Route path="/experiences" element={<Experience />} />
           <Route path="/playground" element={<Playground />} />
           <Route path="*" element={<ErrorMessage />} />

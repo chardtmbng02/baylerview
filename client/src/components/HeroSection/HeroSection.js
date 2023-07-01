@@ -19,11 +19,6 @@ export const HeroSection = () => {
             <p className="text-xl text-gray-600 font-semibold mb-8">
               Where Luxury Meets Tranquility: Your Ultimate Retreat Awaits!
             </p>
-            <Link to="/about"
-              className="bg-red-600 text-white py-3 px-6 rounded-lg shadow-lg hover:bg-red-500 transition duration-200"
-            >
-              Read More
-            </Link>
           </div>
           <div className="lg:w-1/2 lg:ml-12 shadow-3xl rounded-lg">
             <ReactPlayer className="shadow-xl"

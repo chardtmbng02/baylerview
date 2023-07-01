@@ -26,49 +26,16 @@ export const DevTeamSection = () => {
                     <div className="flex-shrink-0">
                       <img
                         className="mb-3 rounded-full mx-auto h-24 w-24"
-                        src={Dev1}
-                        alt="dev1"
-                      />
-                    </div>
-                    <div className="text-center">
-                      <h4 className="text-lg leading-6 font-semibold text-gray-900 transition duration-500 ease-in-out">
-                        Keith Hapa
-                      </h4>
-                      <p className="text-sm leading-6 text-gray-500 uppercase">
-                        Web Developer
-                      </p>
-                      <a
-                        href="https://www.github.com/nomerhapa01"
-                        className="hover:text-red-700 transition duration-500 ease-in-out"
-                        target="_blank"
-                      >
-                        <i className="fa-brands fa-github fa-xl mx-1 my-5"></i>
-                      </a>
-                      <a
-                        href="https://www.facebook.com/mher003"
-                        className="hover:text-red-700 transition duration-500 ease-in-out"
-                        target="_blank"
-                      >
-                        <i className="fa-brands fa-facebook fa-xl mx-1 my-5"></i>
-                      </a>
-                    </div>
-                  </div>
-                </li>
-                <li className="bg-gray-100 p-5 py-10 text-center">
-                  <div className="flex flex-col items-center">
-                    <div className="flex-shrink-0">
-                      <img
-                        className="mb-3 rounded-full mx-auto h-24 w-24"
                         src={Dev2}
                         alt="dev2"
                       />
                     </div>
                     <div className="text-center">
                       <h4 className="text-lg leading-6 font-semibold text-gray-900 transition duration-500 ease-in-out">
-                        Mel Marx Sia
+                        <span className="text-red-600">M</span>el Marx
                       </h4>
                       <p className="text-sm leading-6 text-gray-500 uppercase">
-                        Web Developer
+                        Developer
                       </p>
                       <a
                         href="https://www.github.com/kawasaki4life"
@@ -87,6 +54,7 @@ export const DevTeamSection = () => {
                     </div>
                   </div>
                 </li>
+
                 <li className="bg-gray-100 p-5 py-10 text-center">
                   <div className="flex flex-col items-center">
                     <div className="flex-shrink-0">
@@ -98,10 +66,10 @@ export const DevTeamSection = () => {
                     </div>
                     <div className="text-center">
                       <h4 className="text-lg leading-6 font-semibold text-gray-900 transition duration-500 ease-in-out">
-                        Ulrick Gil Sanchez
+                      <span className="text-red-600">U</span>lrick Gil
                       </h4>
                       <p className="text-sm leading-6 text-gray-500 uppercase">
-                        Web Developer
+                        Developer
                       </p>
                       <a
                         href="https://www.github.com/ulricksanchez"
@@ -120,6 +88,7 @@ export const DevTeamSection = () => {
                     </div>
                   </div>
                 </li>
+
                 <li className="bg-gray-100 p-5 py-10 text-center">
                   <div className="flex flex-col items-center">
                     <div className="flex-shrink-0">
@@ -131,7 +100,7 @@ export const DevTeamSection = () => {
                     </div>
                     <div className="text-center">
                       <h4 className="text-lg leading-6 font-semibold text-gray-900 transition duration-500 ease-in-out">
-                        Richard Tambong
+                      <span className="text-red-600">R</span>ichard
                       </h4>
                       <p className="text-sm leading-6 text-gray-500 uppercase">
                         Team Leader
@@ -153,12 +122,46 @@ export const DevTeamSection = () => {
                     </div>
                   </div>
                 </li>
+
+                <li className="bg-gray-100 p-5 py-10 text-center">
+                  <div className="flex flex-col items-center">
+                    <div className="flex-shrink-0">
+                      <img
+                        className="mb-3 rounded-full mx-auto h-24 w-24"
+                        src={Dev1}
+                        alt="dev1"
+                      />
+                    </div>
+                    <div className="text-center">
+                      <h4 className="text-lg leading-6 font-semibold text-gray-900 transition duration-500 ease-in-out">
+                      <span className="text-red-600">K</span>eith Nomer
+                      </h4>
+                      <p className="text-sm leading-6 text-gray-500 uppercase">
+                        Developer
+                      </p>
+                      <a
+                        href="https://www.github.com/nomerhapa01"
+                        className="hover:text-red-700 transition duration-500 ease-in-out"
+                        target="_blank"
+                      >
+                        <i className="fa-brands fa-github fa-xl mx-1 my-5"></i>
+                      </a>
+                      <a
+                        href="https://www.facebook.com/mher003"
+                        className="hover:text-red-700 transition duration-500 ease-in-out"
+                        target="_blank"
+                      >
+                        <i className="fa-brands fa-facebook fa-xl mx-1 my-5"></i>
+                      </a>
+                    </div>
+                  </div>
+                </li>
               </ul>
             </div>
 
             <div className="text-left mb-10 sm:ml-10 md:ml-24 sm:w-6/12 order-first sm:order-last">
               <h3 className="text-3xl sm:text-5xl leading-normal font-extrabold tracking-tight text-gray-900">
-                Meet Our <span className="text-red-700">Team</span>
+                Meet Our <span className="text-red-600">Team</span>
               </h3>
               <p className="mt-4 text-md leading-7 text-gray-500 font-light">
                 Working together as a team, we have achieved remarkable
@@ -178,7 +181,8 @@ export const DevTeamSection = () => {
                 <br />
                 Let them make you even hungrier to succeed.
                 <br />
-                <br />- Murk Technology Solutions -
+                <br />
+                <span className="text-red-600 font-semibold">- Murk Technology Solutions -</span>
               </p>
             </div>
           </div>

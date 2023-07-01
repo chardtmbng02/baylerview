@@ -1,8 +1,8 @@
 import { useTitle } from "../Hooks/useTitle";
 import { useEffect } from "react";
-import { ExperienceSection } from "../components/ExperienceSection/ExperienceSection"
-import { Footer } from "../components/Footer/Footer"
-import { NavigationBar } from "../components/Navigation/NavigationBar"
+import { Footer } from "../components/Footer/Footer";
+import { NavigationBar } from "../components/Navigation/NavigationBar";
+import { Testimonials} from "../components/TestimonialSection/Testimonials";
 
 export const Experience = () => {
   useTitle("Experiences | Bay-Ler View Hotel");
@@ -13,7 +13,9 @@ export const Experience = () => {
   return (
     <>
     <NavigationBar />
-    <ExperienceSection />
+    <div className="py-20 bg-gray-100">
+    <Testimonials />
+    </div>
     <Footer />
     </>
   )
