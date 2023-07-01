@@ -6,7 +6,7 @@ const Login = require('../models/login');
 router.get('/', async (req, res) => {
   try {
     const login = await Login.find();
-    res.json({ success: true, data: logins });
+    res.json({ success: true, data: login });
   } catch (error) {
     console.log(error);
     res.status(500).json({ success: false, error: 'Something Went Wrong' });
