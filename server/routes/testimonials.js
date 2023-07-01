@@ -1,23 +1,23 @@
 const express = require('express');
 const router = express.Router();
-const Room = require('../models/room');
+const Testimonial = require('../models/testimonial');
 
-//get all rooms
+//get all testimonials
 router.get('/', async (req, res) => {
   try {
-    const rooms = await Room.find();
-    res.json({ success: true, data: rooms });
+    const testimonials = await Testimonial.find();
+    res.json({ success: true, data: testimonials });
   } catch (error) {
     console.log(error);
     res.status(500).json({ success: false, error: 'Something Went Wrong' });
   }
 });
 
-//get a single room
+//get a single testimonial
 router.get('/:id', async (req, res) => {
   try {
-    const room = await Room.findById(req.params.id);
-    res.json({ success: true, data: room });
+    const testimonial = await Testimonial.findById(req.params.id);
+    res.json({ success: true, data: testimonial });
   } catch (error) {
     console.log(error);
     res.status(500).json({ success: false, error: 'Something Went Wrong' });
@@ -26,20 +26,19 @@ router.get('/:id', async (req, res) => {
 
 //Add a room
 router.post('/', async (req, res) => {
-    const room = new Room({
+    const testimonial = new Testimonial({
       image_url: req.body.image_url,
       name: req.body.name,
-      description: req.body.description,
-      amenities: req.body.amenities,
-      capacity: req.body.capacity,
-      stars: req.body.stars,
-      rate: req.body.rate,
-      room_type: req.body.room_type,
+      email: req.body.email,
+      position: req.body.position,
+      message: req.body.message,
+      ratings: req.body.ratings,
+ 
     });
   
     try {
-      const savedRoom = await room.save();
-      res.json({ success: true, data: savedRoom });
+      const savedTestimonial = await testimonial.save();
+      res.json({ success: true, data: savedTestimonial });
     } catch (error) {
       console.log(error);
       res.status(500).json({ success: false, error: 'Something Went Wrong' });

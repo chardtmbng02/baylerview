@@ -1,8 +1,6 @@
 import Room1 from "../../assets/room-images/room-3.png";
 
 export const FirstRoomSection = () => {
-  //
-  console.log("rooms");
   const rooms = [
     {
       _id: "1",

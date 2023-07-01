@@ -1,29 +1,21 @@
 const mongoose = require('mongoose');
 
-const RoomSchema = new mongoose.Schema({
+const TestimonialSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, 'Please add a text field'],
   },
-  description: {
+  email: {
+    type: String,
+    required: [true, 'Please add a text field'],
+  },
+  position: {
     type: String,
   },
-  amenities: {
+  message: {
     type: String,
   },
-  capacity: {
-    type: String,
-  },
-  stars: {
-    type: String,
-  },
-  rate: {
-    type: String,
-  },
-  image_url: {
-    type: String,
-  },
-  room_type: {
+  ratings: {
     type: String,
   },
   date: {
@@ -32,4 +24,4 @@ const RoomSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('Room', RoomSchema);
+module.exports = mongoose.model('Testimonial', TestimonialSchema);

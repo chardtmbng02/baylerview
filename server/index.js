@@ -50,4 +50,7 @@ app.use("/api/newsletters", newslettersRouter);
 const contactsRouter = require("./routes/contacts");
 app.use("/api/contacts", contactsRouter);
 
+const testimonialsRouter = require("./routes/testimonials");
+app.use("/api/testimonials", testimonialsRouter);
+
 app.listen(port, () => console.log(`Server listening in port ${port}`));
