@@ -12,6 +12,9 @@ const ContactSchema = new mongoose.Schema({
   message: {
     type: String,
   },
+  message_status: {
+    type: String,
+  },
   date: {
     type: Date,
     default: Date.now,

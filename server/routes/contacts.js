@@ -30,6 +30,7 @@ router.post('/', async (req, res) => {
       name: req.body.name,
       email: req.body.email,
       message: req.body.message,
+      message_status: req.body.message_status,
     });
   
     try {
