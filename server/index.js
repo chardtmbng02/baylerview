@@ -53,7 +53,7 @@ app.use("/api/contacts", contactsRouter);
 const testimonialsRouter = require("./routes/testimonials");
 app.use("/api/testimonials", testimonialsRouter);
 
-const loginsRouter = require("./routes/login");
+const loginsRouter = require("./routes/logins");
 app.use("/api/login", loginsRouter);
 
 app.listen(port, () => console.log(`Server listening in port ${port}`));
