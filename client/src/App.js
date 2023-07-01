@@ -12,6 +12,7 @@ import { ErrorMessage } from "./components/ErrorMessage";
 import { RoomsList } from "./pages/RoomsList";
 import { AboutUs } from "./pages/AboutUs";
 import { Experience } from "./pages/Experience";
+import { Login } from "./pages/Login";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/location" element={<Location />} />

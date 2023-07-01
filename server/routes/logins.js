@@ -25,7 +25,7 @@ router.get('/:id', async (req, res) => {
 });
 
 //Add an account
-router.post('/', async (req, res) => {
+router.post('/add', async (req, res) => {
     const login = new Login({
       username: req.body.username,
       password: req.body.password,
