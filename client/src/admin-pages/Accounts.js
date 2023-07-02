@@ -3,9 +3,10 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../assets/Logo/icon.png";
 import { SidebarNav } from "../admin-components/Navigation/SidebarNav";
-import { DashboardCards } from "../admin-components/DashboardCards/DashboardCards";
+import { AccountsList } from "../admin-components/Accounts/AccountsList";
+// import { AdminPlayground } from "./AdminPlayground";
 
-export const Dashboard = () => {
+export const Accounts = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false); //This will be the declarations for toggle of sidebar.
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -23,7 +24,7 @@ export const Dashboard = () => {
   }, []);
 
   const storedId = sessionStorage.getItem("session_id"); //Get the session id from the session storage
-  // const storedName = sessionStorage.getItem("session_name"); //Get the session id from the session storage
+  const storedName = sessionStorage.getItem("session_name"); //Get the session id from the session storage
   const navigate = useNavigate(); //Navigate to a specific path
 
   useEffect(() => {
@@ -84,9 +85,34 @@ export const Dashboard = () => {
                 </svg>
               </button>
             </div>
+            <div className="flex items-center pr-4">
+              <span className="flex items-center text-gray-500 focus:outline-none focus:text-gray-700">
+                Hello, {storedName}
+              </span>
+            </div>
+          </div>
+
+          <div>
+            <h1 className="text-gray-500 mx-5 pt-10 text-xl font-semibold">
+              Accounts Manager
+            </h1>
+            <h3 className="text-gray-500 mx-5 text-sm pb-10">
+              You can manage account records here. Create, Read, Update, and
+              Delete.
+            </h3>
           </div>
           <div className="overflow-y-auto mx-5">
-            <DashboardCards />
+            <AccountsList />
+            {/* <AdminPlayground /> */}
+          </div>
+
+          <div className="mx-5 py-10">
+            <h3 className="mx-5 text-gray-500 text-sm">
+              Create an account for your employee
+            </h3>
+            <button className="m-3 py-3 px-8 text-sm bg-red-600 hover:bg-red-500 rounded text-white">
+              Add New Account
+            </button>
           </div>
         </div>
       </div>

@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../assets/Logo/icon.png";
 import { SidebarNav } from "../admin-components/Navigation/SidebarNav";
-import { DashboardCards } from "../admin-components/DashboardCards/DashboardCards";
 
 export const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false); //This will be the declarations for toggle of sidebar.
@@ -23,7 +22,7 @@ export const Dashboard = () => {
   }, []);
 
   const storedId = sessionStorage.getItem("session_id"); //Get the session id from the session storage
-  // const storedName = sessionStorage.getItem("session_name"); //Get the session id from the session storage
+  const storedName = sessionStorage.getItem("session_name"); //Get the session id from the session storage
   const navigate = useNavigate(); //Navigate to a specific path
 
   useEffect(() => {
@@ -84,10 +83,15 @@ export const Dashboard = () => {
                 </svg>
               </button>
             </div>
+            <div className="flex items-center pr-4">
+              <span className="flex items-center text-gray-500 focus:outline-none focus:text-gray-700">
+                Hello, {storedName}
+              </span>
+            </div>
           </div>
           <div className="overflow-y-auto mx-5">
-            <DashboardCards />
-          </div>
+            {/* MainContent */}
+            </div>
         </div>
       </div>
     </>

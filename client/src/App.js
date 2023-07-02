@@ -15,7 +15,9 @@ import { Experience } from "./pages/Experience";
 import { Login } from "./pages/Login";
 
 import { Dashboard } from "./admin-pages/Dashboard";
+import { Accounts} from "./admin-pages/Accounts";
 import { AdminPlayground } from "./admin-pages/AdminPlayground";
+import EditAccount from "./admin-components/Accounts/EditAccount";
 
 
 function App() {
@@ -43,6 +45,8 @@ function App() {
            
            {/* Admin */}
            <Route path="/admin/dashboard" element={<Dashboard />} />
+           <Route path="/admin/accounts" element={<Accounts />} />
+           <Route path="/admin/accounts/edit/:id" element={<EditAccount />} />
            <Route path="/admin/playground" element={<AdminPlayground />} />
 
 

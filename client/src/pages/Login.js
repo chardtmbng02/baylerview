@@ -29,9 +29,21 @@ export const Login = () => {
         );
 
         if (matchedUser) {
-          console.log(matchedUser);
+          if (matchedUser.account_status === "inactive") {
+            // Account is inactive, show an alert
+            alert("Your account is inactive. Please contact support.");
+            return;
+          }
+
+          if (matchedUser.account_status === "deleted") {
+            setInvalidCredentials(true);
+            return;
+          }
+
+          // console.log(matchedUser);
           setInvalidCredentials(false);
           sessionStorage.setItem("session_id", matchedUser._id);
+          sessionStorage.setItem("session_name", matchedUser.firstname);
           setShowModal(true);
           setTimeout(() => {
             setShowModal(false);

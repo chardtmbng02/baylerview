@@ -10,13 +10,14 @@ export const SidebarNav = () => {
 
   const handleLogout = () => {
     sessionStorage.removeItem("session_id");
+    sessionStorage.removeItem("session_name");
   };
 
   return (
     <>
       <nav className="flex-1 px-2 py-4 bg-gray-800">
         <div className="mb-6 px-6 py-4">
-          <Link to="#">
+          <Link to="/admin/dashboard">
             <span className="inline-block text-white hover:text-red-500 my-2 w-full">
               <span className="material-icons-outlined float-left pr-2">
                 dashboard
@@ -93,7 +94,7 @@ export const SidebarNav = () => {
             </span>
           </Link>
           <span className="text-gray-500 text-sm">Main menu</span>
-          <Link to="#">
+          <Link to="/admin/accounts">
             <span className="inline-block text-white hover:text-red-500 my-2 w-full">
               <span className="material-icons-outlined float-left pr-2">
                 face
@@ -102,7 +103,7 @@ export const SidebarNav = () => {
             </span>
           </Link>
 
-          <Link to="#">
+          <Link to="/admin">
             <span
               onClick={handleLogout}
               className="inline-block text-white hover:text-red-500 my-2 w-full hover:cursor-pointer"
