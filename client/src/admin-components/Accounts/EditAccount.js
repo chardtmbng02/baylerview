@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 
 export const EditAccount = () => {
@@ -36,12 +36,6 @@ export const EditAccount = () => {
     <>
       <div className="flex items-center justify-center p-12">
         <div className="mx-auto w-full">
-          <h1 className="text-3xl text-center text-gray-700 font-semibold">
-            Update User Account
-          </h1>
-          <h3 className="text-sm text-center text-gray-400 font-light pb-5">
-            This is where you update user account.
-          </h3>
           <form>
             <div className="-mx-3 flex flex-wrap">
               <div className="w-full px-3 sm:w-1/2">
@@ -259,9 +253,11 @@ export const EditAccount = () => {
               <button type="submit" onClick={handleClick} className="hover:shadow-form rounded-md bg-red-600 py-3 px-8 text-center text-base font-semibold text-white outline-none">
                 Update
               </button>
+              <Link to="/admin/accounts">
               <button className="hover:bg-red-500 rounded-md bg-red-600 py-3 px-8 text-center text-base font-semibold text-white outline-none mx-3">
                 Back
               </button>
+              </Link>
 
             </div>
           </form>

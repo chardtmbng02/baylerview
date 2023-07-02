@@ -29,21 +29,19 @@ export const Login = () => {
         );
 
         if (matchedUser) {
-          if (matchedUser.account_status === "inactive") {
+          if (matchedUser.account_status === "Inactive") {
             // Account is inactive, show an alert
             alert("Your account is inactive. Please contact support.");
             return;
           }
 
-          if (matchedUser.account_status === "deleted") {
+          if (matchedUser.account_status === "Deleted") {
             setInvalidCredentials(true);
             return;
           }
-
-          // console.log(matchedUser);
+          
           setInvalidCredentials(false);
-          sessionStorage.setItem("session_id", matchedUser._id);
-          sessionStorage.setItem("session_name", matchedUser.firstname);
+          localStorage.setItem("local_id", matchedUser._id);
           setShowModal(true);
           setTimeout(() => {
             setShowModal(false);

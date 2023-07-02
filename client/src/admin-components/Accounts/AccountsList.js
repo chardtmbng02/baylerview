@@ -47,7 +47,7 @@ export const AccountsList = () => {
       <td className="px-6 py-4 whitespace-nowrap">
         <div
           className={`text-sm ${
-            account.account_status === "active"
+            account.account_status === "Active"
               ? "text-green-500"
               : "text-red-500"
           }`}
@@ -56,7 +56,7 @@ export const AccountsList = () => {
         </div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm text-gray-900">{account.date}</div>
+      <div className="text-sm text-gray-900">{new Date(account.date).toLocaleString()}</div>
       </td>
 
       <td className="px-6 py-4 whitespace-nowrap  text-sm font-medium">

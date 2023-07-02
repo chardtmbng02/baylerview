@@ -22,7 +22,7 @@ export const UpdateUser = () => {
     };
   }, []);
 
-  const storedId = sessionStorage.getItem("session_id"); //Get the session id from the session storage
+  const storedId = localStorage.getItem("local_id"); //Get the local id from the local storage
   const navigate = useNavigate(); //Navigate to a specific path
 
   useEffect(() => {

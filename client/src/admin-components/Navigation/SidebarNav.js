@@ -9,8 +9,7 @@ export const SidebarNav = () => {
   };
 
   const handleLogout = () => {
-    sessionStorage.removeItem("session_id");
-    sessionStorage.removeItem("session_name");
+    localStorage.removeItem("local_id");
   };
 
   return (
@@ -68,12 +67,12 @@ export const SidebarNav = () => {
               </Link>
             </div>
           )}
-          <Link to="#">
+          <Link to="/admin/messages">
             <span className="inline-block text-white hover:text-red-500 my-2 w-full">
               <span className="material-icons-outlined float-left pr-2">
                 chat
               </span>
-              Feedbacks
+              Messages
             </span>
           </Link>
           <Link to="#">

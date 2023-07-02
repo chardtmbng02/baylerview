@@ -20,6 +20,8 @@ import { AdminPlayground } from "./admin-pages/AdminPlayground";
 import { AddUser } from "./admin-pages/AddUser";
 import { UpdateUser } from "./admin-pages/UpdateUser";
 
+import { Messages } from "./admin-pages/Messages";
+
 
 function App() {
 
@@ -46,9 +48,14 @@ function App() {
            
            {/* Admin */}
            <Route path="/admin/dashboard" element={<Dashboard />} />
+
            <Route path="/admin/accounts" element={<Accounts />} />
            <Route path="/admin/accounts/add" element={<AddUser />} />
            <Route path="/admin/accounts/edit/:id" element={<UpdateUser />} />
+
+
+           <Route path="/admin/messages" element={<Messages />} />
+
            <Route path="/admin/playground" element={<AdminPlayground />} />
 
 

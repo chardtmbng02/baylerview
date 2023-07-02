@@ -22,8 +22,7 @@ export const Dashboard = () => {
     };
   }, []);
 
-  const storedId = sessionStorage.getItem("session_id"); //Get the session id from the session storage
-  // const storedName = sessionStorage.getItem("session_name"); //Get the session id from the session storage
+  const storedId = localStorage.getItem("local_id"); //Get the session id from the local storage
   const navigate = useNavigate(); //Navigate to a specific path
 
   useEffect(() => {
