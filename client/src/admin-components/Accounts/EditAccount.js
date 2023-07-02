@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
-const EditAccount = () => {
+export const EditAccount = () => {
   const { id } = useParams(); // Get the account ID from the URL parameter
   const [account, setAccount] = useState(null);
 
@@ -19,40 +18,14 @@ const EditAccount = () => {
       });
   }, [id]);
 
+  const [inputValue, setInputValue] = useState('');
 
-  const [accountData, setAccountData] = useState({
-    fName: "",
-    lName: "",
-    username: "",
-    email: "",
-    password: "",
-    vpassword: "",
-    guest: "",
-    acctype: "",
-    accstatus: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setAccountData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+  const handleChange = (event) => {
+    setInputValue(event.target.value);
   };
 
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    axios
-      .post(`https://baylerview-api.onrender.com/api/logins/${id}`, accountData)
-      .then((response) => {
-        console.log("Account updated successfully");
-        // Redirect or perform any other action after successful update
-      })
-      .catch((error) => {
-        console.log(error);
-        console.log(accountData)
-      });
+  const handleClick = () => {
+    console.log(inputValue);
   };
 
   if (!account) {
@@ -62,19 +35,19 @@ const EditAccount = () => {
   return (
     <>
       <div className="flex items-center justify-center p-12">
-        <div className="mx-auto w-full bg-white">
+        <div className="mx-auto w-full">
           <h1 className="text-3xl text-center text-gray-700 font-semibold">
             Update User Account
           </h1>
           <h3 className="text-sm text-center text-gray-400 font-light pb-5">
             This is where you update user account.
           </h3>
-          <form onSubmit={handleSubmit}>
+          <form>
             <div className="-mx-3 flex flex-wrap">
               <div className="w-full px-3 sm:w-1/2">
                 <div className="mb-5">
                   <label
-                    for="fName"
+                    htmlFor="fName"
                     className="mb-3 block text-sm font-medium text-gray-400"
                   >
                     Firstname
@@ -84,7 +57,7 @@ const EditAccount = () => {
                     name="fName"
                     id="fName"
                     placeholder="First Name"
-                    value={account.firstname}
+                    defaultValue={account.firstname}
                     onChange={handleChange}
                     className="w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-800 outline-none focus:border-[#6A64F1] focus:shadow-md"
                   />
@@ -93,7 +66,7 @@ const EditAccount = () => {
               <div className="w-full px-3 sm:w-1/2">
                 <div className="mb-5">
                   <label
-                    for="lName"
+                    htmlFor="lName"
                     className="mb-3 block text-sm font-medium text-gray-400"
                   >
                     Lastname
@@ -103,8 +76,7 @@ const EditAccount = () => {
                     name="lName"
                     id="lName"
                     placeholder="Last Name"
-                    value={account.lastname}
-                    onChange={handleChange}
+                    defaultValue={account.lastname}
                     className="w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-800 outline-none focus:border-[#6A64F1] focus:shadow-md"
                   />
                 </div>
@@ -115,7 +87,7 @@ const EditAccount = () => {
               <div className="w-full px-3 sm:w-1/2">
                 <div className="mb-5">
                   <label
-                    for="fName"
+                    htmlFor="fName"
                     className="mb-3 block text-sm font-medium text-gray-400"
                   >
                     Username
@@ -125,8 +97,7 @@ const EditAccount = () => {
                     name="username"
                     id="username"
                     placeholder="Username"
-                    value={account.username}
-                    onChange={handleChange}
+                    defaultValue={account.username}
                     className="w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-800 outline-none focus:border-[#6A64F1] focus:shadow-md"
                   />
                 </div>
@@ -134,7 +105,7 @@ const EditAccount = () => {
               <div className="w-full px-3 sm:w-1/2">
                 <div className="mb-5">
                   <label
-                    for="lName"
+                    htmlFor="lName"
                     className="mb-3 block text-sm font-medium text-gray-400"
                   >
                     Email Address
@@ -144,8 +115,7 @@ const EditAccount = () => {
                     name="email"
                     id="email"
                     placeholder="Email Address"
-                    value={account.email}
-                    onChange={handleChange}
+                    defaultValue={account.email}
                     className="w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-800 outline-none focus:border-[#6A64F1] focus:shadow-md"
                   />
                 </div>
@@ -166,8 +136,7 @@ const EditAccount = () => {
                     name="password"
                     id="password"
                     placeholder="Password"
-                    value={account.password}
-                    onChange={handleChange}
+                    defaultValue={account.password}
                     className="w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-800 outline-none focus:border-[#6A64F1] focus:shadow-md"
                   />
                 </div>
@@ -185,8 +154,7 @@ const EditAccount = () => {
                     name="vpassword"
                     id="vpassword"
                     placeholder="Verify Password"
-                    value={account.password}
-                    onChange={handleChange}
+                    defaultValue={account.password}
                     className="w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-800 outline-none focus:border-[#6A64F1] focus:shadow-md"
                   />
                 </div>
@@ -205,8 +173,7 @@ const EditAccount = () => {
                 name="position"
                 id="position"
                 placeholder="Position"
-                value={account.position}
-                onChange={handleChange}
+                defaultValue={account.position}
                 className="w-full appearance-none rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-800 outline-none focus:border-[#6A64F1] focus:shadow-md"
               />
             </div>
@@ -224,8 +191,6 @@ const EditAccount = () => {
                         name="acctype"
                         id="acctype1"
                         className="h-5 w-5"
-                        checked={account.user_level.toLowerCase() === "administrator"}
-                        onChange={handleChange}
                       />
                       <label
                         htmlFor="radioButton1"
@@ -240,8 +205,6 @@ const EditAccount = () => {
                         name="acctype"
                         id="acctype2"
                         className="h-5 w-5"
-                        checked={account.user_level.toLowerCase() === "standard"}
-                        onChange={handleChange}
                       />
                       <label
                         htmlFor="radioButton2"
@@ -265,8 +228,6 @@ const EditAccount = () => {
                         name="accstatus"
                         id="accstatus1"
                         className="h-5 w-5"
-                        checked={account.account_status.toLowerCase() === "active"}
-                        onChange={handleChange}
                       />
                       <label
                         htmlFor="radioButton1"
@@ -281,8 +242,6 @@ const EditAccount = () => {
                         name="accstatus"
                         id="accstatus2"
                         className="h-5 w-5"
-                        checked={account.account_status.toLowerCase() === "inactive"}
-                        onChange={handleChange}
                       />
                       <label
                         htmlFor="radioButton2"
@@ -297,19 +256,17 @@ const EditAccount = () => {
             </div>
 
             <div>
-              <button type="submit" className="hover:shadow-form rounded-md bg-red-600 py-3 px-8 text-center text-base font-semibold text-white outline-none">
-                Update Record
+              <button type="submit" onClick={handleClick} className="hover:shadow-form rounded-md bg-red-600 py-3 px-8 text-center text-base font-semibold text-white outline-none">
+                Update
               </button>
-              <Link to="/admin/accounts"><button className="hover:shadow-form rounded-md bg-red-600 py-3 px-8 text-center text-base font-semibold text-white outline-none mx-3">
-                Cancel
+              <button className="hover:bg-red-500 rounded-md bg-red-600 py-3 px-8 text-center text-base font-semibold text-white outline-none mx-3">
+                Back
               </button>
-              </Link>
+
             </div>
           </form>
         </div>
       </div>
     </>
-  );
-};
-
-export default EditAccount;
+  )
+}

@@ -3,10 +3,9 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../assets/Logo/icon.png";
 import { SidebarNav } from "../admin-components/Navigation/SidebarNav";
-import { AccountsList } from "../admin-components/Accounts/AccountsList";
-import { Link } from "react-router-dom";
+import { NewAccount } from "../admin-components/Accounts/NewAccount";
 
-export const Accounts = () => {
+export const AddUser = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false); //This will be the declarations for toggle of sidebar.
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -88,31 +87,18 @@ export const Accounts = () => {
 
           <div>
             <h1 className="text-gray-500 mx-5 pt-10 text-xl font-semibold">
-              Accounts Manager | <span className="text-red-600">List of Accounts</span> 
+              Accounts Manager | <span className="text-red-600">Add New Account</span> 
             </h1>
-            <h3 className="text-gray-500 mx-5 text-sm pb-10">
+            <h3 className="text-gray-500 mx-5 text-sm">
               You can manage account records here. Create, Read, Update, and
               Delete.
             </h3>
           </div>
           <div className="overflow-y-auto mx-5">
-            <AccountsList />
-            {/* <AdminPlayground /> */}
-          </div>
-
-          <div className="mx-5 py-10">
-            <h3 className="mx-5 text-gray-500 text-sm">
-              Create an account for your employee
-            </h3>
-            <Link to="/admin/accounts/add"><button className="m-3 py-3 px-8 text-sm bg-red-600 hover:bg-red-500 rounded text-white">
-              Add New Account
-            </button>
-            </Link>
-          </div>
+            <NewAccount />
+            </div>
         </div>
       </div>
-
     </>
   );
 };
-

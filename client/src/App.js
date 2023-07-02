@@ -17,7 +17,8 @@ import { Login } from "./pages/Login";
 import { Dashboard } from "./admin-pages/Dashboard";
 import { Accounts} from "./admin-pages/Accounts";
 import { AdminPlayground } from "./admin-pages/AdminPlayground";
-import EditAccount from "./admin-components/Accounts/EditAccount";
+import { AddUser } from "./admin-pages/AddUser";
+import { UpdateUser } from "./admin-pages/UpdateUser";
 
 
 function App() {
@@ -46,7 +47,8 @@ function App() {
            {/* Admin */}
            <Route path="/admin/dashboard" element={<Dashboard />} />
            <Route path="/admin/accounts" element={<Accounts />} />
-           <Route path="/admin/accounts/edit/:id" element={<EditAccount />} />
+           <Route path="/admin/accounts/add" element={<AddUser />} />
+           <Route path="/admin/accounts/edit/:id" element={<UpdateUser />} />
            <Route path="/admin/playground" element={<AdminPlayground />} />
 
 

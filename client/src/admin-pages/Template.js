@@ -3,8 +3,9 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../assets/Logo/icon.png";
 import { SidebarNav } from "../admin-components/Navigation/SidebarNav";
+import { NewAccount } from "../admin-components/Accounts/NewAccount";
 
-export const Dashboard = () => {
+export const Template = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false); //This will be the declarations for toggle of sidebar.
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -83,14 +84,10 @@ export const Dashboard = () => {
                 </svg>
               </button>
             </div>
-            <div className="flex items-center pr-4">
-              <span className="flex items-center text-gray-500 focus:outline-none focus:text-gray-700">
-                Hello, {storedName}
-              </span>
-            </div>
           </div>
           <div className="overflow-y-auto mx-5">
             {/* MainContent */}
+            <NewAccount />
             </div>
         </div>
       </div>
