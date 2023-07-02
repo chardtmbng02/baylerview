@@ -1,5 +1,5 @@
 import "./App.css";
-import { useEffect } from "react";
+import { useEffect} from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { ContactUs } from "./pages/ContactUs";
@@ -14,6 +14,9 @@ import { AboutUs } from "./pages/AboutUs";
 import { Experience } from "./pages/Experience";
 import { Login } from "./pages/Login";
 
+import { Dashboard } from "./admin-pages/Dashboard";
+import { AdminPlayground } from "./admin-pages/AdminPlayground";
+
 
 function App() {
 
@@ -25,8 +28,8 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
+          {/* Client */}
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/location" element={<Location />} />
@@ -36,6 +39,14 @@ function App() {
           <Route path="/rooms" element={<RoomsList />} />
           <Route path="/experiences" element={<Experience />} />
           <Route path="/playground" element={<Playground />} />
+          <Route path="/admin" element={<Login />} />
+           
+           {/* Admin */}
+           <Route path="/admin/dashboard" element={<Dashboard />} />
+           <Route path="/admin/playground" element={<AdminPlayground />} />
+
+
+           {/* 404 Handler Page */}
           <Route path="*" element={<ErrorMessage />} />
 
         </Routes>

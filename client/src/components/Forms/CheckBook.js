@@ -44,7 +44,7 @@ export const CheckBook = () => {
       </div>
       <button
               type="button"
-              className="m-3 py-3 px-8 text-sm bg-red-600 hover:bg-red-500 rounded text-white "
+              className="m-3 py-3 px-8 text-sm bg-red-600 hover:bg-red-500 rounded text-white"
               onClick={handleCheckAvailability}
             >
               Check Availability
