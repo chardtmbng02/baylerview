@@ -8,7 +8,7 @@ export const RoomResults = () => {
     const fetchRooms = async () => {
       try {
         const response = await axios.get(
-          'http://localhost:5000/api'
+          'https://baylerview-api.onrender.com/api/testimonials'
         );
         const data = await response.data;
         const testimonialsArray = Object.values(data);
@@ -29,35 +29,14 @@ export const RoomResults = () => {
       <div className="flex flex-col md:flex-row md:-mx-3">
         <div className="flex-1 bg-white">
           <div className="p-10 rounded-lg border border-solid border-gray-200 shadow-xl">
-            <p className="font-light">{testimonial.message}</p>
-            <p className="py-2 font-semibold">
-              Ratings :
-              <span className="text-yellow-400 ml-2">
-                {Array.from({ length: testimonial.ratings }).map((_, index) => (
-                  <i className="fa fa-star" key={index}></i>
-                ))}
-              </span>
-            </p>
-
-            <div className="flex items-center py-2">
-              <img
-                className="w-12 h-12 mr-4 rounded-full"
-                src=""
-                alt={testimonial.name}
-              />
-              <div>
-                <p className="font-light">{testimonial.name}</p>
-                <p className="text-sm text-gray-600 font-semibold">
-                  {testimonial.position}
-                </p>
-              </div>
-            </div>
-            <p className="font-semibold">
-              Date:{' '}
-              <span className="font-light">
-                {testimonial.date.split('T')[0]}
-              </span>
-            </p>
+            <p>{testimonial._id}</p>
+            <p>{testimonial.name}</p>
+            <p>{testimonial.email}</p>
+            <p>{testimonial.position}</p>
+            <p>{testimonial.message}</p>
+            <p>{testimonial.ratings}</p>
+            <p>{testimonial.testimonial_status}</p>
+            <p>{testimonial.date}</p>
           </div>
         </div>
       </div>
