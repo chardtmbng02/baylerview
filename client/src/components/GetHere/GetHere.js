@@ -12,14 +12,14 @@ export const GetHere = () => {
             </p>
           </div>
         </div>
-        <iframe
+        <iframe title="bylermap"
           className="shadow-3xl w-full"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3839.789623904643!2d121.56532877600414!3d15.76226454758073!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3390a6b768df3bb1%3A0xb4d67be8d1aebfce!2sBayler%20View%20Hotel!5e0!3m2!1sen!2sph!4v1687712832632!5m2!1sen!2sph"
           height="500px"
           allowFullScreen=""
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
-        ></iframe>
+        />
       </section>
 
       <section className="bg-gray-100 py-20">

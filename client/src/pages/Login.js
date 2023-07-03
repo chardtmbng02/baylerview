@@ -42,6 +42,7 @@ export const Login = () => {
           
           setInvalidCredentials(false);
           localStorage.setItem("local_id", matchedUser._id);
+          localStorage.setItem("username", matchedUser.username);
           setShowModal(true);
           setTimeout(() => {
             setShowModal(false);

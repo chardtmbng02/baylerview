@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
+
 export const AccountsList = () => {
   const [accounts, setAccounts] = useState([]);
+  const [isOpen, setIsOpen]= useState(false)
 
   useEffect(() => {
     axios

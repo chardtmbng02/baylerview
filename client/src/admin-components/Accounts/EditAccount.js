@@ -1,268 +1,298 @@
-import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
-import axios from "axios";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
+
 
 export const EditAccount = () => {
-  const { id } = useParams(); // Get the account ID from the URL parameter
-  const [account, setAccount] = useState(null);
+  const Navigate = useNavigate();
+  const url = "https://baylerview-api.onrender.com/api/logins/add";
 
-  useEffect(() => {
-    // Fetch the account data from the API using the account ID
-    axios
-      .get(`https://baylerview-api.onrender.com/api/logins/${id}`)
-      .then((response) => {
-        setAccount(response.data.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [id]);
+  function handle(e) {
+    const newdata = { ...data };
+    newdata[e.target.id] = e.target.value;
+    setData(newdata);
+    console.log(newdata);
+  }
 
-  const [inputValue, setInputValue] = useState('');
+  const [data, setData] = useState({
+    username: "",
+    password: "",
+    vpassword: "",
+    lastname: "",
+    firstname: "",
+    email: "",
+    position: "",
+    user_level: "Standard",
+    account_status: "Active",
+  });
 
-  const handleChange = (event) => {
-    setInputValue(event.target.value);
-  };
+  function submit(e) {
+    e.preventDefault();
+    const numbers = ["1", "2", "3","4","5","6","7","8","9","10"];
+    let hasNumber = false;
 
-  const handleClick = () => {
-    console.log(inputValue);
-  };
+    for (let i = 0; i < numbers.length; i++) {
+      if (data.password.includes(numbers[i])) {
+        hasNumber = true;
+        break;
+      }
+    }
 
-  if (!account) {
-    return <div>Loading...</div>;
+    const special = ["!","@","#","$","%","^","&","*"];
+    let hasSpecialCharacter = false;
+
+    for (let i = 0; i < special.length; i++) {
+      if (data.password.includes(special[i])) {
+        hasSpecialCharacter = true;
+        break;
+      }
+    }
+   
+
+    // Check if any required fields are empty
+
+    if (data.firstname.trim() === ""){
+      alert("First Name Field Empty")
+      return;  
+    }
+    else if (data.lastname.trim() === ""){
+      alert("Last Name Field Empty")
+      return;    
+    }
+    else if (data.username.trim() === ""){
+      alert("Username Field Empty")
+      return;   
+    }
+    else if (data.email.trim()=== "" ){
+      alert("Email Field Empty")
+      return;    
+    }
+    else if (data.password.trim()=== ""){
+      alert("Password Field Empty")
+      return;    
+      // pass must have minimum of 8 chars
+    }
+    else if (data.password.trim().length <= 7) { 
+      alert("Passwords must be at least 8 characters")
+      return;
+    } 
+    else if (!hasSpecialCharacter) { 
+      alert("Passwords must have at least 1 special character ex: ! @ # $ % ^ & * ")
+      return;
+    } 
+    else if (!hasNumber) { 
+      alert("Passwords must have at least 1 number ex: 123456879")
+      return;
+    } 
+    //check for empty field
+    else if (data.verified_password.trim()=== ""){
+      alert("Verified Password Field Empty")
+      return;    
+    }
+    //check if pass & verified pass match
+    else if (data.verified_password.trim()!==data.password.trim()){
+      alert("Passwords do not match")
+      return;    
+    }
+      //check for empty field
+    else if (data.position.trim()=== ""){
+      alert("Position Field Empty")
+      return;  
+    } else {
+        //1. use axios.put
+        //2. Show modal ng Success Update
+        //3. Navigate("/admin/accounts") kapag record update success
+    }
   }
 
   return (
     <>
-      <div className="flex items-center justify-center p-12">
-        <div className="mx-auto w-full">
-          <form>
-            <div className="-mx-3 flex flex-wrap">
-              <div className="w-full px-3 sm:w-1/2">
-                <div className="mb-5">
-                  <label
-                    htmlFor="fName"
-                    className="mb-3 block text-sm font-medium text-gray-400"
-                  >
-                    Firstname
-                  </label>
-                  <input
-                    type="text"
-                    name="fName"
-                    id="fName"
-                    placeholder="First Name"
-                    defaultValue={account.firstname}
-                    onChange={handleChange}
-                    className="w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-800 outline-none focus:border-[#6A64F1] focus:shadow-md"
-                  />
-                </div>
+    <div className="flex items-center justify-center p-5">
+      <div className="mx-auto w-full">
+        <form onSubmit={(e) => submit(e)}>
+          <div className="-mx-3 flex flex-wrap">
+            <div className="w-full px-3 sm:w-1/2">
+              <div className="mb-5">
+                <span className="mb-3 block text-sm font-medium text-gray-700">
+                  Firstname
+                </span>
+                <input
+                  onChange={(e) => handle(e)}
+                  id="firstname"
+                  value={data.firstname}
+                  type="text"
+                  name="firstname"
+                  placeholder="First Name"
+                  className="w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-800 outline-none focus:border-[#6A64F1] focus:shadow-md"
+                />
               </div>
-              <div className="w-full px-3 sm:w-1/2">
-                <div className="mb-5">
-                  <label
-                    htmlFor="lName"
-                    className="mb-3 block text-sm font-medium text-gray-400"
-                  >
-                    Lastname
-                  </label>
-                  <input
-                    type="text"
-                    name="lName"
-                    id="lName"
-                    placeholder="Last Name"
-                    defaultValue={account.lastname}
-                    className="w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-800 outline-none focus:border-[#6A64F1] focus:shadow-md"
-                  />
-                </div>
+            </div>
+            <div className="w-full px-3 sm:w-1/2">
+              <div className="mb-5">
+                <span className="mb-3 block text-sm font-medium text-gray-700">
+                  Lastname
+                </span>
+                <input
+                  onChange={(e) => handle(e)}
+                  id="lastname"
+                  value={data.lastname}
+                  type="text"
+                  name="lastname"
+                  placeholder="Last Name"
+                  className="w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-800 outline-none focus:border-[#6A64F1] focus:shadow-md"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="-mx-3 flex flex-wrap">
+            <div className="w-full px-3 sm:w-1/2">
+              <div className="mb-5">
+                <span className="mb-3 block text-sm font-medium text-gray-700">
+                  Username
+                </span>
+                <input
+                  type="text"
+                  name="username"
+                  onChange={(e) => handle(e)}
+                  id="username"
+                  value={data.username}
+                  placeholder="Username"
+                  className="w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-800 outline-none focus:border-[#6A64F1] focus:shadow-md"
+                />
+              </div>
+            </div>
+            <div className="w-full px-3 sm:w-1/2">
+              <div className="mb-5">
+                <span className="mb-3 block text-sm font-medium text-gray-700">
+                  Email Address
+                </span>
+                <input
+                  type="text"
+                  name="email"
+                  onChange={(e) => handle(e)}
+                  id="email"
+                  value={data.email}
+                  placeholder="Email Address"
+                  className="w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-800 outline-none focus:border-[#6A64F1] focus:shadow-md"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="-mx-3 flex flex-wrap">
+            <div className="w-full px-3 sm:w-1/2">
+              <div className="mb-5">
+                <span className="mb-3 block text-sm font-medium text-gray-700">
+                  Password
+                </span>
+                <input
+                  type="text"
+                  name="password"
+                  onChange={(e) => handle(e)}
+                  id="password"
+                  value={data.password}
+                  placeholder="Password"
+                  className="w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-800 outline-none focus:border-[#6A64F1] focus:shadow-md"
+                />
+              </div>
+            </div>
+            <div className="w-full px-3 sm:w-1/2">
+              <div className="mb-5">
+                <span className="mb-3 block text-sm font-medium text-gray-700">
+                  Verify Password
+                </span>
+                <input
+                  type="text"
+                  name="vpassword"
+                  onChange={(e) => handle(e)}
+                  id="vpassword"
+                  value={data.vpassword}
+                  placeholder="Verify Password"
+                  className="w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-800 outline-none focus:border-[#6A64F1] focus:shadow-md"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="-mx-3 flex flex-wrap">
+            <div className="w-full px-3 sm:w-1/2">
+              <div className="mb-5">
+                <span className="mb-3 block text-sm font-medium text-gray-700">
+                  Work Position
+                </span>
+                <input
+                  type="text"
+                  name="position"
+                  onChange={(e) => handle(e)}
+                  id="position"
+                  value={data.position}
+                  placeholder="Your role in your workplace."
+                  className="w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-800 outline-none focus:border-[#6A64F1] focus:shadow-md"
+                />
               </div>
             </div>
 
-            <div className="-mx-3 flex flex-wrap">
-              <div className="w-full px-3 sm:w-1/2">
-                <div className="mb-5">
-                  <label
-                    htmlFor="fName"
-                    className="mb-3 block text-sm font-medium text-gray-400"
-                  >
-                    Username
-                  </label>
-                  <input
+            <div className="w-full px-3 sm:w-1/2">
+              <div className="mb-5">
+                <span className="mb-3 block text-sm font-medium text-gray-700">
+                  User Access Level
+                </span>
+                <div className="relative">
+                  <select
                     type="text"
-                    name="username"
-                    id="username"
-                    placeholder="Username"
-                    defaultValue={account.username}
-                    className="w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-800 outline-none focus:border-[#6A64F1] focus:shadow-md"
-                  />
-                </div>
-              </div>
-              <div className="w-full px-3 sm:w-1/2">
-                <div className="mb-5">
-                  <label
-                    htmlFor="lName"
-                    className="mb-3 block text-sm font-medium text-gray-400"
+                    name="user_level"
+                    onChange={(e) => handle(e)}
+                    id="user_level"
+                    value={data.user_level}
+                    placeholder="Administrator | Standard"
+                    className="w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-800 outline-none focus:border-[#6A64F1]"
                   >
-                    Email Address
-                  </label>
-                  <input
-                    type="text"
-                    name="email"
-                    id="email"
-                    placeholder="Email Address"
-                    defaultValue={account.email}
-                    className="w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-800 outline-none focus:border-[#6A64F1] focus:shadow-md"
-                  />
+                    <option>Standard</option>
+                    <option>Administrator</option>
+                  </select>
                 </div>
               </div>
             </div>
+          </div>
 
-            <div className="-mx-3 flex flex-wrap">
-              <div className="w-full px-3 sm:w-1/2">
-                <div className="mb-5">
-                  <label
-                    htmlFor="fName"
-                    className="mb-3 block text-sm font-medium text-gray-400"
-                  >
-                    Password
-                  </label>
-                  <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    placeholder="Password"
-                    defaultValue={account.password}
-                    className="w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-800 outline-none focus:border-[#6A64F1] focus:shadow-md"
-                  />
-                </div>
-              </div>
-              <div className="w-full px-3 sm:w-1/2">
-                <div className="mb-5">
-                  <label
-                    htmlFor="vpassword"
-                    className="mb-3 block text-sm font-medium text-gray-400"
-                  >
-                    Verify Password
-                  </label>
-                  <input
-                    type="password"
-                    name="vpassword"
-                    id="vpassword"
-                    placeholder="Verify Password"
-                    defaultValue={account.password}
-                    className="w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-800 outline-none focus:border-[#6A64F1] focus:shadow-md"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div className="mb-5">
-              <label
-                htmlFor="position"
-                className="mb-3 block text-sm font-medium text-gray-400"
-              >
-                Position
-              </label>
-              <input
+          <div className="mb-5">
+            <span className="mb-3 block text-sm font-medium text-gray-700">
+              Account Status
+            </span>
+            <div className="relative">
+              <select
                 type="text"
-                name="position"
-                id="position"
-                placeholder="Position"
-                defaultValue={account.position}
-                className="w-full appearance-none rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-800 outline-none focus:border-[#6A64F1] focus:shadow-md"
-              />
+                name="account_status"
+                onChange={(e) => handle(e)}
+                id="account_status"
+                value={data.account_status}
+                placeholder="Active | In-Active"
+                className="w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-800 outline-none focus:border-[#6A64F1]"
+              >
+                <option>Active</option>
+                <option>Inactive</option>
+                <option>Deleted</option>
+              </select>
             </div>
+          </div>
 
-            <div className="-mx-3 flex flex-wrap">
-              <div className="w-full px-3 sm:w-1/2">
-                <div className="mb-5">
-                  <label className="mb-3 block text-sm font-medium text-gray-400">
-                    Account Type
-                  </label>
-                  <div className="flex items-center space-x-6">
-                    <div className="flex items-center">
-                      <input
-                        type="radio"
-                        name="acctype"
-                        id="acctype1"
-                        className="h-5 w-5"
-                      />
-                      <label
-                        htmlFor="radioButton1"
-                        className="pl-3 text-base font-medium"
-                      >
-                        Administrator
-                      </label>
-                    </div>
-                    <div className="flex items-center">
-                      <input
-                        type="radio"
-                        name="acctype"
-                        id="acctype2"
-                        className="h-5 w-5"
-                      />
-                      <label
-                        htmlFor="radioButton2"
-                        className="pl-3 text-base font-medium"
-                      >
-                        Standard
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="w-full px-3 sm:w-1/2">
-                <div className="mb-5">
-                  <label className="mb-3 block text-sm font-medium text-gray-400">
-                    Account Status
-                  </label>
-                  <div className="flex items-center space-x-6">
-                    <div className="flex items-center">
-                      <input
-                        type="radio"
-                        name="accstatus"
-                        id="accstatus1"
-                        className="h-5 w-5"
-                      />
-                      <label
-                        htmlFor="radioButton1"
-                        className="pl-3 text-base font-medium"
-                      >
-                        Active
-                      </label>
-                    </div>
-                    <div className="flex items-center">
-                      <input
-                        type="radio"
-                        name="accstatus"
-                        id="accstatus2"
-                        className="h-5 w-5"
-                      />
-                      <label
-                        htmlFor="radioButton2"
-                        className="pl-3 text-base font-medium"
-                      >
-                        Inactive
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <button type="submit" onClick={handleClick} className="hover:shadow-form rounded-md bg-red-600 py-3 px-8 text-center text-base font-semibold text-white outline-none">
-                Update
+          <div>
+            <button
+              type="submit"
+              className="hover:shadow-form rounded-md bg-green-600 hover:bg-green-500 hover:text-black py-3 px-8 text-center text-base text-white outline-none"
+            >
+             Update
+            </button>
+            <Link to="/admin/accounts">
+              <button className="hover:shadow-form rounded-md bg-red-600 hover:bg-red-500 hover:text-black py-3 px-8 text-center text-base text-white outline-none mx-3">
+                Cancel
               </button>
-              <Link to="/admin/accounts">
-              <button className="hover:bg-red-500 rounded-md bg-red-600 py-3 px-8 text-center text-base font-semibold text-white outline-none mx-3">
-                Back
-              </button>
-              </Link>
-
-            </div>
-          </form>
-        </div>
+            </Link>
+          </div>
+        </form>
       </div>
-    </>
-  )
-}
+    </div>
+  </>
+  );
+};

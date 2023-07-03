@@ -89,7 +89,7 @@ export const AddUser = () => {
             <h1 className="text-gray-500 mx-5 pt-10 text-xl font-semibold">
               Accounts Manager | <span className="text-red-600">Add New Account</span> 
             </h1>
-            <h3 className="text-gray-500 mx-5 text-sm">
+            <h3 className="text-gray-500 mx-5 text-sm mb-5">
               You can manage account records here. Create, Read, Update, and
               Delete.
             </h3>
