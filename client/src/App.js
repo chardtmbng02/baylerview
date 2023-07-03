@@ -1,6 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from "./pages/Home";
+import { BookNow } from "./pages/BookNow";
 import { ContactUs } from "./pages/ContactUs";
 import { Location } from "./pages/Location";
 import { PrivacyPolicy } from "./pages/PrivacyPolicy";
@@ -28,12 +29,16 @@ import { StandardRoomLists } from "./admin-pages/Rooms/StandardRoomLists";
 import { DeluxeRoomLists } from "./admin-pages/Rooms/DeluxeRoomLists";
 import { SuiteRoomLists } from "./admin-pages/Rooms/SuiteRoomLists";
 
+//Deleting Records
+import { DeleteAccount } from "./admin-components/Accounts/DeleteAccount";
+
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/check-reservation" element={<BookNow />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/location" element={<Location />} />
@@ -50,6 +55,7 @@ function App() {
           <Route path="/admin/accounts" element={<Accounts />} />
           <Route path="/admin/accounts/add" element={<AddUser />} />
           <Route path="/admin/accounts/edit/:id" element={<UpdateUser />} />
+          <Route path="/admin/accounts/delete/:id" element={<DeleteAccount />} />
 
           <Route path="/admin/messages" element={<Messages />} />
           <Route path="/admin/newsletters" element={<Newsletters />} />
@@ -59,6 +65,10 @@ function App() {
           <Route path="/admin/rooms/standard" element={<StandardRoomLists />} />
           <Route path="/admin/rooms/deluxe" element={<DeluxeRoomLists />} />
           <Route path="/admin/rooms/suite" element={<SuiteRoomLists />} />
+
+
+
+         
 
 
           <Route path="/admin/playground" element={<AdminPlayground />} />

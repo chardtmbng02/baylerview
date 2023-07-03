@@ -1,4 +1,4 @@
-import "../Forms/CheckBook.css";
+
 export const CheckBook = () => {
 
   const handleCheckAvailability = () => {
