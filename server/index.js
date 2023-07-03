@@ -41,6 +41,9 @@ app.get("/", (req, res) => {
 const roomsRouter = require("./routes/rooms");
 app.use("/api/rooms", roomsRouter);
 
+const reservationRouter = require('./routes/reservations');
+app.use('/api/reservations', reservationRouter);
+
 const newslettersRouter = require("./routes/newsletters");
 app.use("/api/newsletters", newslettersRouter);
 

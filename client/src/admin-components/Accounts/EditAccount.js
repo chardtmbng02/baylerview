@@ -1,12 +1,44 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-
+import { useState, useEffect } from "react";
+import { Link, Navigate, useParams } from "react-router-dom";
+import axios from "axios";
 
 
 export const EditAccount = () => {
-  const Navigate = useNavigate();
-  const url = "https://baylerview-api.onrender.com/api/logins/add";
+  const { id } = useParams(); // Get the account ID from the URL parameter
+  /* const [account, setAccount] = useState(null);*/
+  const [successModal, setsuccessModal] = useState(false);
+  const [account, setAccount] = useState({
+    username: "",
+    password: "",
+    vpassword: "",
+    lastname: "",
+    firstname: "",
+    email: "",
+    position: "",
+    user_level: "",
+    account_status: "",
+  });
 
+  useEffect(() => {
+    // Fetch the account data from the API using the account ID
+    axios
+      .get(`https://baylerview-api.onrender.com/api/logins/${id}`)
+      .then((response) => {
+        setAccount(response.data.data);
+        setData(response.data.data);
+        setData(prevData => ({
+          ...prevData,
+          vpassword: prevData.password
+        }));
+      /*   console.log(response.data.data); */
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [id]);
+
+ /*  console.log(account); */
+ 
   function handle(e) {
     const newdata = { ...data };
     newdata[e.target.id] = e.target.value;
@@ -22,12 +54,15 @@ export const EditAccount = () => {
     firstname: "",
     email: "",
     position: "",
-    user_level: "Standard",
-    account_status: "Active",
+    user_level: "",
+    account_status: "",
   });
 
+  console.log(data);
+  
   function submit(e) {
     e.preventDefault();
+   
     const numbers = ["1", "2", "3","4","5","6","7","8","9","10"];
     let hasNumber = false;
 
@@ -48,7 +83,7 @@ export const EditAccount = () => {
       }
     }
    
-
+   
     // Check if any required fields are empty
 
     if (data.firstname.trim() === ""){
@@ -85,12 +120,12 @@ export const EditAccount = () => {
       return;
     } 
     //check for empty field
-    else if (data.verified_password.trim()=== ""){
+    else if (data.vpassword.trim()=== ""){
       alert("Verified Password Field Empty")
       return;    
     }
     //check if pass & verified pass match
-    else if (data.verified_password.trim()!==data.password.trim()){
+    else if (data.vpassword.trim()!==data.password.trim()){
       alert("Passwords do not match")
       return;    
     }
@@ -99,9 +134,26 @@ export const EditAccount = () => {
       alert("Position Field Empty")
       return;  
     } else {
-        //1. use axios.put
-        //2. Show modal ng Success Update
-        //3. Navigate("/admin/accounts") kapag record update success
+      //  axios
+      //   .put(`https://baylerview-api.onrender.com/api/logins/${id}`, {
+      //     username: data.username,
+      //     password: data.password,
+      //     lastname: data.lastname,
+      //     firstname: data.firstname,
+      //     email: data.email,
+      //     position: data.position,
+      //     user_level: data.user_level,
+      //     account_status: data.account_status,
+      //   })
+      //   .then((res) => {
+      //     setsuccessModal(true);
+      //     setTimeout(() => {
+      //       setsuccessModal(false);
+      //       Navigate("/admin/accounts");
+      //     }, 3000);
+      //   });
+
+      console.log(data)
     }
   }
 
@@ -119,11 +171,12 @@ export const EditAccount = () => {
                 <input
                   onChange={(e) => handle(e)}
                   id="firstname"
-                  value={data.firstname}
+                  defaultValue={account.firstname}
                   type="text"
                   name="firstname"
-                  placeholder="First Name"
+                  placeholder='First Name'
                   className="w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-800 outline-none focus:border-[#6A64F1] focus:shadow-md"
+
                 />
               </div>
             </div>
@@ -135,7 +188,7 @@ export const EditAccount = () => {
                 <input
                   onChange={(e) => handle(e)}
                   id="lastname"
-                  value={data.lastname}
+                  defaultValue={account.lastname}
                   type="text"
                   name="lastname"
                   placeholder="Last Name"
@@ -156,7 +209,7 @@ export const EditAccount = () => {
                   name="username"
                   onChange={(e) => handle(e)}
                   id="username"
-                  value={data.username}
+                  defaultValue={account.username}
                   placeholder="Username"
                   className="w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-800 outline-none focus:border-[#6A64F1] focus:shadow-md"
                 />
@@ -172,7 +225,7 @@ export const EditAccount = () => {
                   name="email"
                   onChange={(e) => handle(e)}
                   id="email"
-                  value={data.email}
+                  defaultValue={account.email}
                   placeholder="Email Address"
                   className="w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-800 outline-none focus:border-[#6A64F1] focus:shadow-md"
                 />
@@ -191,7 +244,7 @@ export const EditAccount = () => {
                   name="password"
                   onChange={(e) => handle(e)}
                   id="password"
-                  value={data.password}
+                  defaultValue={account.password}
                   placeholder="Password"
                   className="w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-800 outline-none focus:border-[#6A64F1] focus:shadow-md"
                 />
@@ -207,7 +260,7 @@ export const EditAccount = () => {
                   name="vpassword"
                   onChange={(e) => handle(e)}
                   id="vpassword"
-                  value={data.vpassword}
+                  defaultValue={account.password}
                   placeholder="Verify Password"
                   className="w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-800 outline-none focus:border-[#6A64F1] focus:shadow-md"
                 />
@@ -226,7 +279,7 @@ export const EditAccount = () => {
                   name="position"
                   onChange={(e) => handle(e)}
                   id="position"
-                  value={data.position}
+                  defaultValue={account.position}
                   placeholder="Your role in your workplace."
                   className="w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-800 outline-none focus:border-[#6A64F1] focus:shadow-md"
                 />
@@ -244,7 +297,7 @@ export const EditAccount = () => {
                     name="user_level"
                     onChange={(e) => handle(e)}
                     id="user_level"
-                    value={data.user_level}
+                    defaultValue={account.user_level}
                     placeholder="Administrator | Standard"
                     className="w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-800 outline-none focus:border-[#6A64F1]"
                   >

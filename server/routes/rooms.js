@@ -26,24 +26,70 @@ router.get('/:id', async (req, res) => {
 
 //Add a room
 router.post('/', async (req, res) => {
-    const room = new Room({
-      image_url: req.body.image_url,
-      name: req.body.name,
-      description: req.body.description,
-      amenities: req.body.amenities,
-      capacity: req.body.capacity,
-      stars: req.body.stars,
-      rate: req.body.rate,
-      room_type: req.body.room_type,
-    });
-  
-    try {
-      const savedRoom = await room.save();
-      res.json({ success: true, data: savedRoom });
-    } catch (error) {
-      console.log(error);
-      res.status(500).json({ success: false, error: 'Something Went Wrong' });
-    }
+  const roomNumber = req.body.roomNumber;
+
+  // Check if the room number already exists
+  const existingRoom = await Room.findOne({ roomNumber });
+  if (existingRoom) {
+    return res.status(409).json({ error: 'Room number already exists' });
+  }
+
+  const room = new Room({
+    image_url: req.body.image_url,
+    roomNumber: roomNumber,
+    name: req.body.name,
+    description: req.body.description,
+    amenities: req.body.amenities,
+    capacity: req.body.capacity,
+    stars: req.body.stars,
+    rate: req.body.rate,
+    room_type: req.body.room_type,
   });
+
+  try {
+    const savedRoom = await room.save();
+    res.json({ success: true, data: savedRoom });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, error: 'Something Went Wrong' });
+  }
+});
+
+//to get all the available rooms on a specific date
+router.post('/available', async (req, res) => {
+  const { checkIn, checkOut } = req.body;
+
+  try {
+    // Find all rooms where the date range does not overlap with existing reservations
+    const availableRooms = await Room.find({
+      reservations: {
+        $not: {
+          $elemMatch: {
+            $or: [
+              {
+                checkIn: { $lt: new Date(checkOut) },
+                checkOut: { $gt: new Date(checkIn) },
+              },
+              {
+                checkIn: { $lte: new Date(checkIn) },
+                checkOut: { $gte: new Date(checkOut) },
+              },
+              {
+                checkIn: { $gte: new Date(checkIn) },
+                checkOut: { $lte: new Date(checkOut) },
+              },
+            ],
+          },
+        },
+      },
+      capacity: { $gte: req.body.persons },
+    });
+
+    res.json({ success: true, data: availableRooms });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, error: 'Something Went Wrong' });
+  }
+});
 
 module.exports = router;

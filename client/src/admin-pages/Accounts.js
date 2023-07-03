@@ -97,7 +97,6 @@ export const Accounts = () => {
           </div>
           <div className="overflow-y-auto mx-5">
             <AccountsList />
-            {/* <AdminPlayground /> */}
           </div>
 
           <div className="mx-5 py-10">

@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const RoomSchema = new mongoose.Schema({
+  roomNumber: {
+    type: String,
+    required: true,
+    unique: true,
+  },
   name: {
     type: String,
     required: [true, 'Please add a text field'],
@@ -30,6 +35,16 @@ const RoomSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  reservations: [
+    {
+      reservation: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Reservation',
+      },
+      checkIn: Date,
+      checkOut: Date,
+    },
+  ],
 });
 
 module.exports = mongoose.model('Room', RoomSchema);

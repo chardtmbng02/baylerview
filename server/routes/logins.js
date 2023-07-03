@@ -83,20 +83,8 @@ router.put('/:id', async (req, res) => {
 //Delete an Account
 router.delete('/:id', async (req, res) => {
   try {
-    const login = await Login.findById(req.params.id);
-
-    //Match the username
-
-    if (login.username === req.body.username) {
-      await Login.findByIdAndDelete(req.params.id);
-      return res.json({ success: true, data: {} });
-    }
-
-    //If not match
-    res.status(403).json({
-      success: false,
-      error: ' You are not authorized to delete this resource',
-    });
+    await Login.findByIdAndDelete(req.params.id);
+    return res.json({ success: true, data: {} });
   } catch (error) {
     console.log(error);
     res.status(500).json({ success: false, error: 'Something Went Wrong' });
