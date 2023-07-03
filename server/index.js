@@ -56,6 +56,8 @@ app.use("/api/testimonials", testimonialsRouter);
 const loginsRouter = require("./routes/logins");
 app.use("/api/logins", loginsRouter);
 
+app.use("/api/allrecords", roomsRouter,newslettersRouter,contactsRouter,testimonialsRouter,loginsRouter)
+
 
 
 app.listen(port, () => console.log(`Server listening in port ${port}`));
