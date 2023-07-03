@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Testimonial = require('../models/testimonial');
+const testimonial = require('../models/testimonial');
 
 //get all testimonials
 router.get('/', async (req, res) => {
@@ -44,5 +45,16 @@ router.post('/', async (req, res) => {
       res.status(500).json({ success: false, error: 'Something Went Wrong' });
     }
   });
+
+  //Delete a testimonial
+router.delete('/:id', async (req, res) => {
+  try {
+    await testimonial.findByIdAndDelete(req.params.id);
+    return res.json({ success: true, data: {} });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, error: 'Something Went Wrong' });
+  }
+});
 
 module.exports = router;

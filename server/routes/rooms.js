@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Room = require('../models/room');
+const room = require('../models/room');
 
 //get all rooms
 router.get('/', async (req, res) => {
@@ -92,4 +93,14 @@ router.post('/available', async (req, res) => {
   }
 });
 
+//Delete a Room
+router.delete('/:id', async (req, res) => {
+  try {
+    await room.findByIdAndDelete(req.params.id);
+    return res.json({ success: true, data: {} });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, error: 'Something Went Wrong' });
+  }
+});
 module.exports = router;

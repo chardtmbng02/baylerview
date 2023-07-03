@@ -1,10 +1,11 @@
-import { useParams, Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 export const DeleteAccount = () => {
   const { id } = useParams(); // Get the account ID from the URL parameter
   const [accounts, setAccounts] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,6 +21,18 @@ export const DeleteAccount = () => {
 
     fetchData();
   }, [id]);
+
+  const handleConfirmDelete = async () => {
+    try {
+      await axios.delete(
+        `https://baylerview-api.onrender.com/api/logins/${id}`
+      );
+      alert('Record Successfully Deleted!');
+      navigate('/admin/accounts'); // Navigate back to the accounts page after successful deletion
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -88,6 +101,7 @@ export const DeleteAccount = () => {
 
                   <button
                     type="submit"
+                    onClick={handleConfirmDelete}
                     className="hover:text-black inline-flex items-center justify-center py-1 gap-1 font-medium rounded-lg border transition-colors outline-none focus:ring-offset-2 focus:ring-2 focus:ring-inset min-h-[2.25rem] px-4 text-sm text-white shadow focus:ring-white border-transparent bg-green-600 hover:bg-green-500 focus:bg-red-700 focus:ring-offset-red-700"
                   >
                     <span className="flex items-center gap-1">

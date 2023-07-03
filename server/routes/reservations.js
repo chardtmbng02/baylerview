@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Reservation = require('../models/reservation');
 const Room = require('../models/room');
+const reservation = require('../models/reservation');
 
 // For getting all reservations
 router.get('/reserved', async (req, res) => {
@@ -83,6 +84,17 @@ router.post('/', async (req, res) => {
   } catch (error) {
     console.error(error); // Log the actual error to the console for debugging
     res.status(500).json({ error: `Internal Server Error: ${error.message}` });
+  }
+});
+
+//Delete a reservation
+router.delete('/:id', async (req, res) => {
+  try {
+    await reservation.findByIdAndDelete(req.params.id);
+    return res.json({ success: true, data: {} });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, error: 'Something Went Wrong' });
   }
 });
 

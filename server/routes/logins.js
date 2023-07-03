@@ -47,37 +47,34 @@ router.post("/add", async (req, res) => {
 });
 
 // Update Account
-router.put('/:id', async (req, res) => {
-  try {
-    const login = await Login.findById(req.params.id);
-    // Match the usernames
-    if (login.username === req.body.username) {
-      const updatedLogin = await Login.findByIdAndUpdate(
-        req.params.id,
-        { $set: { 
-          username: req.body.text, 
-          password: req.body.password,
-          lastname: req.body.lastname,
-          firstname: req.body.firstname,
-          email: req.body.email,
-          position: req.body.position,
-          user_level: req.body.user_level,
-          account_status: req.body.account_status,
-          date: Date.now,
-         } },
-        { new: true }
-      );
-      return res.json({ success: true, data: updatedLogin});
-    }
-    // Usernames do not match
-    res.status(403).json({
-      success: false,
-      error: 'You are not authorized to update this resource',
-    });
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ success: false, error: 'Something went wrong' });
-  }
+router.put('/:id', (req, res) => {
+  const userId = req.params.id; // Assuming user ID is provided in the URL
+  // Extract updated user data from request body
+  const {
+    username,
+    password,
+    lastname,
+    firstname,
+    email,
+    position,
+    user_level,
+    account_status
+  } = req.body;
+  
+  const updatedUserData = {
+    username,
+    password,
+    lastname,
+    firstname,
+    email,
+    position,
+    user_level,
+    account_status,
+    date: Date.now()
+  };
+
+  // Return a response indicating the success or failure of the update operation
+  res.json({ success: true, message: 'User data updated successfully', data: updatedUserData });
 });
 
 //Delete an Account

@@ -15,22 +15,24 @@ import { Experience } from "./pages/Experience";
 import { Login } from "./pages/Login";
 
 import { Dashboard } from "./admin-pages/Dashboard";
-import { Accounts } from "./admin-pages/Accounts";
 import { AdminPlayground } from "./admin-pages/AdminPlayground";
-import { AddUser } from "./admin-pages/AddUser";
-import { UpdateUser } from "./admin-pages/UpdateUser";
-
 import { Messages } from "./admin-pages/Messages";
 import { Newsletters } from "./admin-pages/Newsletters";
 import { Testimonials } from "./admin-pages/Testimonials";
 
+
+//Accounts CRUD
+import { Accounts } from "./admin-pages/Accounts";
+import { AddUser } from "./admin-pages/AddUser";
+import { UpdateUser } from "./admin-pages/UpdateUser";
+import { DeleteAccount } from "./admin-components/Accounts/DeleteAccount";
+
+//Rooms CRUD
 import { FeaturedRoomLists } from "./admin-pages/Rooms/FeaturedRoomLists";
 import { StandardRoomLists } from "./admin-pages/Rooms/StandardRoomLists";
 import { DeluxeRoomLists } from "./admin-pages/Rooms/DeluxeRoomLists";
 import { SuiteRoomLists } from "./admin-pages/Rooms/SuiteRoomLists";
-
-//Deleting Records
-import { DeleteAccount } from "./admin-components/Accounts/DeleteAccount";
+import { AddRoom } from "./admin-pages/AddRooms";
 
 function App() {
   return (
@@ -61,6 +63,8 @@ function App() {
           <Route path="/admin/newsletters" element={<Newsletters />} />
           <Route path="/admin/testimonials" element={<Testimonials />} />
 
+
+          <Route path="/admin/rooms/add" element={<AddRoom />} />
           <Route path="/admin/rooms/featured" element={<FeaturedRoomLists />} />
           <Route path="/admin/rooms/standard" element={<StandardRoomLists />} />
           <Route path="/admin/rooms/deluxe" element={<DeluxeRoomLists />} />

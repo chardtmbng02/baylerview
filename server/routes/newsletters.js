@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Newsletter = require("../models/newsletter");
+const newsletter = require("../models/newsletter");
 
 //get all emails
 router.get("/", async (req, res) => {
@@ -39,5 +40,16 @@ router.post('/', async (req, res) => {
       res.status(500).json({ success: false, error: 'Something Went Wrong' });
     }
   });
+
+  //Delete an Newsletter
+router.delete('/:id', async (req, res) => {
+  try {
+    await newsletter.findByIdAndDelete(req.params.id);
+    return res.json({ success: true, data: {} });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, error: 'Something Went Wrong' });
+  }
+});
 
 module.exports = router;
