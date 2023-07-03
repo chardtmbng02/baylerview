@@ -8,7 +8,7 @@ export const RoomResults = () => {
     const fetchRooms = async () => {
       try {
         const response = await axios.get(
-          'http://localhost:5000/api/rooms'
+          'http://localhost:5000/api'
         );
         const data = await response.data;
         const testimonialsArray = Object.values(data);

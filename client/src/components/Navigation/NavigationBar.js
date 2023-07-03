@@ -44,7 +44,7 @@ export const NavigationBar = () => {
           {/* <Link to="/about">About Us</Link> */}
           <Link to="/rooms">Rooms</Link>
           <Link to="/experiences">Experiences</Link>
-          <Link to="/">
+          <Link to="/check-reservation">
             <button
               type="button"
               className="bg-red-600 text-white py-3 px-6 rounded-lg shadow-lg hover:bg-red-500 transition duration-200"
