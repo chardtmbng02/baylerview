@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../assets/Logo/icon.png";
 import { SidebarNav } from "../admin-components/Navigation/SidebarNav";
-import { DashboardCards } from "../admin-components/DashboardCards/DashboardCards";
+import { MyBarChart } from "../admin-components/DashboardCards/MyBarChart";
 
 export const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false); //This will be the declarations for toggle of sidebar.
@@ -85,7 +85,7 @@ export const Dashboard = () => {
             </div>
           </div>
           <div className="overflow-y-auto mx-5">
-            <DashboardCards />
+            <MyBarChart />
           </div>
         </div>
       </div>

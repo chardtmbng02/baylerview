@@ -18,12 +18,13 @@ export const AccountsList = () => {
 
   const accountusers = accounts.map((account, index) => (
     <tr key={index}>
-
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="text-sm text-gray-900">{account.email}</div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm text-gray-900">{account.firstname}&nbsp;{account.lastname}</div>
+        <div className="text-sm text-gray-900">
+          {account.firstname}&nbsp;{account.lastname}
+        </div>
       </td>
 
       <td className="px-6 py-4 whitespace-nowrap">
@@ -44,16 +45,16 @@ export const AccountsList = () => {
         </div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
-      <div className="text-sm text-gray-900">{new Date(account.date).toLocaleString()}</div>
+        <div className="text-sm text-gray-900">
+          {new Date(account.date).toLocaleString()}
+        </div>
       </td>
 
       <td className="px-6 py-4 whitespace-nowrap  text-sm font-medium">
-        <Link
-          to={`/admin/accounts/edit/${account._id}`}
-        >
+        <Link to={`/admin/accounts/edit/${account._id}`}>
           <button className="mr-1 text-white py-1 px-3 bg-green-600 rounded-sm hover:bg-green-500 hover:text-black">
-          Edit
-        </button>
+            Edit
+          </button>
         </Link>
         <button className="ml-1 text-white py-1 px-3 bg-red-600 rounded-sm hover:bg-red-500 hover:text-black">
           Trash
@@ -72,31 +73,13 @@ export const AccountsList = () => {
                 scope="col"
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
-                Username
-              </th>
-              <th
-                scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-              >
-                Password
-              </th>
-              <th
-                scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-              >
                 Email
               </th>
               <th
                 scope="col"
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
-                Lastname
-              </th>
-              <th
-                scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-              >
-                Firstname
+                Name
               </th>
               <th
                 scope="col"
@@ -120,7 +103,7 @@ export const AccountsList = () => {
                 scope="col"
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
-                Date Modified
+                Date
               </th>
               <th
                 scope="col"
