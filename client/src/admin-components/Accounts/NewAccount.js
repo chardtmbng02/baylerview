@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const NewAccount = () => {
   const Navigate = useNavigate();
@@ -19,20 +19,6 @@ export const NewAccount = () => {
 
   function submit(e) {
     e.preventDefault();
-
-    // Check if any required fields are empty
-    if (
-      data.firstname.trim() === "" ||
-      data.lastname.trim() === "" ||
-      data.username.trim() === "" ||
-      data.email.trim() === "" ||
-      data.password.trim() === "" ||
-      data.verified_password.trim() === "" ||
-      data.position.trim() === ""
-    ) {
-      alert("All Fields are required");
-      return;
-    }
 
     axios
       .post(url, {
@@ -56,7 +42,7 @@ export const NewAccount = () => {
     const newdata = { ...data };
     newdata[e.target.id] = e.target.value;
     setData(newdata);
-    // console.log(newdata);
+    console.log(newdata);
   }
 
   return (
@@ -143,6 +129,9 @@ export const NewAccount = () => {
                   <input
                     type="password"
                     name="password"
+                    onChange={(e) => handle(e)}
+                    id="password"
+                    value={data.password}
                     placeholder="Password"
                     className="w-full rounded-md border border-gray-300 bg-white py-3 px-6 text-base font-medium text-gray-800 outline-none focus:border-[#6A64F1] focus:shadow-md"
                   />
@@ -219,12 +208,12 @@ export const NewAccount = () => {
             <div>
               <button
                 type="submit"
-                className="hover:shadow-form rounded-md bg-red-600 py-3 px-8 text-center text-base font-semibold text-white outline-none"
+                className="hover:shadow-form rounded-md bg-green-600 hover:bg-green-500 hover:text-black py-3 px-8 text-center text-base text-white outline-none"
               >
                 Save
               </button>
               <Link to="/admin/accounts">
-                <button className="hover:shadow-form rounded-md bg-red-600 py-3 px-8 text-center text-base font-semibold text-white outline-none mx-3">
+                <button className="hover:shadow-form rounded-md bg-red-600 hover:bg-red-500 hover:text-black py-3 px-8 text-center text-base text-white outline-none mx-3">
                   Back
                 </button>
               </Link>

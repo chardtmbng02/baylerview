@@ -1,5 +1,4 @@
 import "./App.css";
-import { useEffect} from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { ContactUs } from "./pages/ContactUs";
@@ -15,25 +14,25 @@ import { Experience } from "./pages/Experience";
 import { Login } from "./pages/Login";
 
 import { Dashboard } from "./admin-pages/Dashboard";
-import { Accounts} from "./admin-pages/Accounts";
+import { Accounts } from "./admin-pages/Accounts";
 import { AdminPlayground } from "./admin-pages/AdminPlayground";
 import { AddUser } from "./admin-pages/AddUser";
 import { UpdateUser } from "./admin-pages/UpdateUser";
 
 import { Messages } from "./admin-pages/Messages";
+import { Newsletters } from "./admin-pages/Newsletters";
+import { Testimonials } from "./admin-pages/Testimonials";
 
+import { FeaturedRoomLists } from "./admin-pages/Rooms/FeaturedRoomLists";
+import { StandardRoomLists } from "./admin-pages/Rooms/StandardRoomLists";
+import { DeluxeRoomLists } from "./admin-pages/Rooms/DeluxeRoomLists";
+import { SuiteRoomLists } from "./admin-pages/Rooms/SuiteRoomLists";
 
 function App() {
-
-  useEffect(() => {
-    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-  }, []);
-
   return (
     <>
       <BrowserRouter>
         <Routes>
-          {/* Client */}
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/about" element={<AboutUs />} />
@@ -45,23 +44,27 @@ function App() {
           <Route path="/experiences" element={<Experience />} />
           <Route path="/playground" element={<Playground />} />
           <Route path="/admin" element={<Login />} />
-           
-           {/* Admin */}
-           <Route path="/admin/dashboard" element={<Dashboard />} />
 
-           <Route path="/admin/accounts" element={<Accounts />} />
-           <Route path="/admin/accounts/add" element={<AddUser />} />
-           <Route path="/admin/accounts/edit/:id" element={<UpdateUser />} />
+          <Route path="/admin/dashboard" element={<Dashboard />} />
+
+          <Route path="/admin/accounts" element={<Accounts />} />
+          <Route path="/admin/accounts/add" element={<AddUser />} />
+          <Route path="/admin/accounts/edit/:id" element={<UpdateUser />} />
+
+          <Route path="/admin/messages" element={<Messages />} />
+          <Route path="/admin/newsletters" element={<Newsletters />} />
+          <Route path="/admin/testimonials" element={<Testimonials />} />
+
+          <Route path="/admin/rooms/featured" element={<FeaturedRoomLists />} />
+          <Route path="/admin/rooms/standard" element={<StandardRoomLists />} />
+          <Route path="/admin/rooms/deluxe" element={<DeluxeRoomLists />} />
+          <Route path="/admin/rooms/suite" element={<SuiteRoomLists />} />
 
 
-           <Route path="/admin/messages" element={<Messages />} />
+          <Route path="/admin/playground" element={<AdminPlayground />} />
 
-           <Route path="/admin/playground" element={<AdminPlayground />} />
-
-
-           {/* 404 Handler Page */}
+          {/* 404 Handler Page */}
           <Route path="*" element={<ErrorMessage />} />
-
         </Routes>
       </BrowserRouter>
     </>

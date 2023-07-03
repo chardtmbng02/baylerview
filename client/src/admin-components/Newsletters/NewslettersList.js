@@ -1,42 +1,36 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export const MessagesList = () => {
-  const [messages, setMessages] = useState([]);
+export const NewslettersList = () => {
+  const [newsletters, setNewsletters] = useState([]);
 
   useEffect(() => {
     axios
-      .get("https://baylerview-api.onrender.com/api/contacts")
+      .get("https://baylerview-api.onrender.com/api/newsletters")
       .then((response) => {
-        setMessages(response.data.data);
+        setNewsletters(response.data.data);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
 
-  const contactmessages = messages.map((message, index) => (
+  const displayNewsletters = newsletters.map((newsletter, index) => (
     <tr key={index}>
 
       <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm text-gray-900">{message.name}</div>
+        <div className="text-sm text-gray-900">{newsletter.email}</div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm text-gray-900">{message.email}</div>
+        <div className="text-sm text-gray-900">{newsletter.subscription}</div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm text-gray-900">{message.message_status}</div>
+        <div className="text-sm text-gray-900">{newsletter.date}</div>
       </td>
-      <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm text-gray-900">{new Date(message.date).toLocaleString()}</div>
-      </td>
-      
+  
       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-      <button className="mr-1 text-white py-1 px-3 bg-green-600 rounded-sm hover:bg-green-500 hover:text-black">
-          Open
-        </button>
-        <button className="ml-1 text-white py-1 px-3 bg-red-600 rounded-sm hover:bg-red-500 hover:text-black">
-          Trash
+        <button className="text-white py-1 px-3 bg-red-600 hover:bg-red-500 rounded-sm hover:text-black">
+          Unsubscribe
         </button>
       </td>
     </tr>
@@ -53,25 +47,19 @@ export const MessagesList = () => {
                 scope="col"
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
-                Sender
+                Email Address
               </th>
               <th
                 scope="col"
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
-                Sender Email
+                Subscription
               </th>
               <th
                 scope="col"
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
-               Message Status
-              </th>
-              <th
-                scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-              >
-                date received
+               Date
               </th>
               <th
                 scope="col"
@@ -84,7 +72,7 @@ export const MessagesList = () => {
           </thead>
 
           <tbody className="bg-white divide-y divide-gray-200">
-            {contactmessages}
+            {displayNewsletters}
           </tbody>
         </table>
       </div>

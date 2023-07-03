@@ -17,10 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use((req, res, next) => {
-  res.header(
-    "Access-Control-Allow-Origin",
-    "*"
-  ); // or '*' for any origin
+  res.header("Access-Control-Allow-Origin", "*"); // or '*' for any origin
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
   next();
@@ -56,8 +53,7 @@ app.use("/api/testimonials", testimonialsRouter);
 const loginsRouter = require("./routes/logins");
 app.use("/api/logins", loginsRouter);
 
-app.use("/api/allrecords", roomsRouter,newslettersRouter,contactsRouter,testimonialsRouter,loginsRouter)
-
-
+const databasesRouter = require("./routes/databases");
+app.use("/api/allrecords", databasesRouter);
 
 app.listen(port, () => console.log(`Server listening in port ${port}`));

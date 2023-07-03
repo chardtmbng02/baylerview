@@ -1,46 +1,51 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export const MessagesList = () => {
-  const [messages, setMessages] = useState([]);
+export const StandardRoomList = () => {
+    const [rooms, setRooms] = useState([]);
 
   useEffect(() => {
     axios
-      .get("https://baylerview-api.onrender.com/api/contacts")
+      .get("https://baylerview-api.onrender.com/api/rooms")
       .then((response) => {
-        setMessages(response.data.data);
+        setRooms(response.data.data);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
 
-  const contactmessages = messages.map((message, index) => (
-    <tr key={index}>
-
+  const displayFeaturedRooms = rooms
+    .filter((room) => room.room_type === "Standard") //####### change room type here #######
+    .map((room, index) => (
+        
+        <tr key={index}>
       <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm text-gray-900">{message.name}</div>
+        <div className="text-sm text-gray-900">{room.name}</div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm text-gray-900">{message.email}</div>
+        <div className="text-sm text-gray-900">{room.description}</div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm text-gray-900">{message.message_status}</div>
+        <div className="text-sm text-gray-900">{room.capacity}</div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm text-gray-900">{new Date(message.date).toLocaleString()}</div>
+        <div className="text-sm text-gray-900">{room.room_type}</div>
       </td>
-      
+      <td className="px-6 py-4 whitespace-nowrap">
+        <div className="text-sm text-gray-900">{room.stars}</div>
+      </td>
+  
       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-      <button className="mr-1 text-white py-1 px-3 bg-green-600 rounded-sm hover:bg-green-500 hover:text-black">
+        <button className="mr-1 text-white py-1 px-3 bg-green-600 hover:bg-green-500 rounded-sm hover:text-black">
           Open
         </button>
-        <button className="ml-1 text-white py-1 px-3 bg-red-600 rounded-sm hover:bg-red-500 hover:text-black">
+        <button className="ml-1 text-white py-1 px-3 bg-red-600 hover:bg-red-500 rounded-sm hover:text-black">
           Trash
         </button>
       </td>
     </tr>
-  ));
+        ));
 
   return (
     <>
@@ -53,25 +58,31 @@ export const MessagesList = () => {
                 scope="col"
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
-                Sender
+                Room Name
               </th>
               <th
                 scope="col"
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
-                Sender Email
+                Description
               </th>
               <th
                 scope="col"
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
-               Message Status
+               Capacity
               </th>
               <th
                 scope="col"
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
-                date received
+               Type 
+              </th>
+              <th
+                scope="col"
+                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+              >
+               Ratings 
               </th>
               <th
                 scope="col"
@@ -84,7 +95,7 @@ export const MessagesList = () => {
           </thead>
 
           <tbody className="bg-white divide-y divide-gray-200">
-            {contactmessages}
+            {displayFeaturedRooms}
           </tbody>
         </table>
       </div>

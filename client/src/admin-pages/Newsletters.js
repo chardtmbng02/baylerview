@@ -3,10 +3,10 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../assets/Logo/icon.png";
 import { SidebarNav } from "../admin-components/Navigation/SidebarNav";
-import { AccountsList } from "../admin-components/Accounts/AccountsList";
 import { Link } from "react-router-dom";
+import { NewslettersList } from "../admin-components/Newsletters/NewslettersList";
 
-export const Accounts = () => {
+export const Newsletters = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false); //This will be the declarations for toggle of sidebar.
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -88,34 +88,29 @@ export const Accounts = () => {
 
           <div>
             <h1 className="text-gray-500 mx-5 pt-10 text-xl font-semibold">
-              Accounts Manager | <span className="text-red-600">Registered Accounts</span> 
+              Newsletters Manager&nbsp;|&nbsp;
+              <span className="text-red-600">Subscribed Emails</span>
             </h1>
             <h3 className="text-gray-500 mx-5 text-sm pb-10">
-              You can manage account records here. Create, Read, Update, and
-              Delete.
+              You can manage newsletter records here.
             </h3>
           </div>
           <div className="overflow-y-auto mx-5">
-            <AccountsList />
-            {/* <AdminPlayground /> */}
+            <NewslettersList />
           </div>
 
           <div className="mx-5 py-10">
             <h3 className="mx-5 text-gray-500 text-sm">
-              Account Manager Control
+              Newsletter Manager Control
             </h3>
-            <Link to="/admin/accounts/add"><button className="m-3 py-3 px-8 text-sm bg-green-600 hover:bg-green-500 hover:text-black rounded text-white">
-              Add New Account
-            </button>
+            <Link to="#">
+              <button className="m-3 py-3 px-8 text-sm bg-red-600 hover:bg-red-500 rounded text-white hover:text-black">
+                Recycle Bin
+              </button>
             </Link>
-            <button className="m-3 py-3 px-8 text-sm bg-red-600 hover:bg-red-500 rounded text-white hover:text-black">
-              Recycle Bin
-            </button> 
           </div>
         </div>
       </div>
-
     </>
   );
 };
-

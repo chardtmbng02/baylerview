@@ -35,34 +35,42 @@ export const SidebarNav = () => {
           </Link>
 
           <span className="text-gray-500 text-sm">Manage</span>
-          <Link to="#"><span
-            className="inline-block text-white hover:text-red-500 my-2 w-full"
-            onClick={toggleDropdown}
-          >
-            <span className="material-icons-outlined float-left pr-2">bed</span>
-            Rooms
-            <span className="material-icons-outlined float-right">
-              {isDropdownOpen ? "keyboard_arrow_up" : "keyboard_arrow_down"}
+          <Link to="#">
+            <span
+              className="inline-block text-white hover:text-red-500 my-2 w-full"
+              onClick={toggleDropdown}
+            >
+              <span className="material-icons-outlined float-left pr-2">
+                bed
+              </span>
+              Rooms
+              <span className="material-icons-outlined float-right">
+                {isDropdownOpen ? "keyboard_arrow_up" : "keyboard_arrow_down"}
+              </span>
             </span>
-          </span>
           </Link>
           {isDropdownOpen && (
             <div className="pl-8">
-              <Link to="#">
+              <Link to="/admin/rooms/featured">
+                <span className="inline-block text-white hover:text-red-500 my-2 w-full">
+                  Featured
+                </span>
+              </Link>
+              <Link to="/admin/rooms/standard">
                 <span className="inline-block text-white hover:text-red-500 my-2 w-full">
                   Standard
                 </span>
               </Link>
 
-              <Link to="#">
+              <Link to="/admin/rooms/deluxe">
                 <span className="inline-block text-white hover:text-red-500 my-2 w-full">
                   Deluxe
                 </span>
               </Link>
 
-              <Link to="#">
+              <Link to="/admin/rooms/suite">
                 <span className="inline-block text-white hover:text-red-500 my-2 w-full">
-                  Sweet
+                  Suite
                 </span>
               </Link>
             </div>
@@ -75,7 +83,7 @@ export const SidebarNav = () => {
               Messages
             </span>
           </Link>
-          <Link to="#">
+          <Link to="/admin/testimonials">
             <span className="inline-block text-white hover:text-red-500 my-2 w-full">
               <span className="material-icons-outlined float-left pr-2">
                 record_voice_over
@@ -84,7 +92,7 @@ export const SidebarNav = () => {
             </span>
           </Link>
 
-          <Link to="#">
+          <Link to="/admin/newsletters">
             <span className="inline-block text-white hover:text-red-500 my-2 w-full">
               <span className="material-icons-outlined float-left pr-2">
                 email

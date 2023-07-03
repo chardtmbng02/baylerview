@@ -1,33 +1,45 @@
+import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const ContactSection = () => {
+  const Navigate = useNavigate();
+  const url = "https://baylerview-api.onrender.com/api/contacts";
 
-  function postData(event) {
-    event.preventDefault();
-    const inputName = document.getElementById('name').value;
-    const inputEmail = document.getElementById('email').value;
-    const inputMessage = document.getElementById('message').value;
-  
-    const data = {
-      name: inputName,
-      email: inputEmail,
-      message: inputMessage
-    };
-  
-    fetch('https://baylerview-api.onrender.com/api/contacts', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then(response => response.json())
-      .then(result => {
-        console.log(result);
+  const [contactmessagedata, setContactMessageData] = useState({
+    name: "",
+    email: "",
+    message: "",
+    message_status: "New Message",
+  });
+
+  function submitContactMessage(e) {
+    e.preventDefault();
+
+    axios
+      .post(url, {
+        name: contactmessagedata.name,
+        email: contactmessagedata.email,
+        message: contactmessagedata.message,
+        message_status: contactmessagedata.message_status,
       })
-      .catch(error => {
-        console.error('Error:', error);
+      .then(() => {
+        alert("Your Message was sent Successfully!");
+        Navigate("/");
+        
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
       });
   }
+
+  function handle(e) {
+    const newContactData = { ...contactmessagedata };
+    newContactData[e.target.id] = e.target.value;
+    setContactMessageData(newContactData);
+    console.log(newContactData);
+  }
+
 
   return (
     <section className="bg-gray-100 pt-10" id="contact">
@@ -140,50 +152,49 @@ export const ContactSection = () => {
                 </li>
               </ul>
             </div>
-            <div className="card h-fit max-w-6xl p-5 md:p-12" id="form">
+            <div className="card h-fit max-w-6xl p-5 md:p-12">
               <h2 className="mb-4 text-2xl font-bold">Ready to Get Started?</h2>
 
-              <form id="contactForm">
+              <form onSubmit={(e) => submitContactMessage(e)}>
                 <div className="mb-6">
                   <div className="mx-0 mb-1 sm:mb-4">
                     <div className="mx-0 mb-1 sm:mb-4">
-                      <input
+                    <input
                         type="text"
+                        name="fullname"
+                        onChange={(e) => handle(e)}
                         id="name"
-                        autoComplete="given-name"
-                        placeholder="Your name"
+                        value={contactmessagedata.name}
+                        placeholder="Your Name"
                         className="bg-white mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md sm:mb-0"
-                        name="name"
-                        
                       />
                     </div>
                     <div className="mx-0 mb-1 sm:mb-4">
                       <input
                         type="email"
+                        name="email"
+                        onChange={(e) => handle(e)}
                         id="email"
-                        autoComplete="email"
+                        value={contactmessagedata.email}
                         placeholder="Your email address"
                         className="bg-white mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md sm:mb-0"
-                        name="email"
-                        
                       />
                     </div>
                   </div>
                   <div className="mx-0 mb-1 sm:mb-4">
-                    <textarea
-                      id="message"
-                      name="message"
-                      cols="30"
-                      rows="5"
-                      placeholder="Write your message..."
-                      className="bg-white mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md sm:mb-0"
-                      
-                    ></textarea>
+                  <input
+                        type="text"
+                        name="contactmessage"
+                        onChange={(e) => handle(e)}
+                        id="message"
+                        value={contactmessagedata.message}
+                        placeholder="Your Message"
+                        className="bg-white mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md sm:mb-0"
+                      />
                   </div>
                 </div>
                 <div className="text-center">
                   <button
-                  onClick={postData}
                     type="submit"
                     className="w-full bg-red-600 hover:bg-red-500 text-white px-6 py-3 font-xl rounded-md sm:mb-0"
                   >

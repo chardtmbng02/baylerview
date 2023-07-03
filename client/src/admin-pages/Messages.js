@@ -88,7 +88,7 @@ export const Messages = () => {
 
           <div>
             <h1 className="text-gray-500 mx-5 pt-10 text-xl font-semibold">
-              Messages Manager |{" "}
+              Messages Manager&nbsp;|&nbsp;
               <span className="text-red-600">List of Messages</span>
             </h1>
             <h3 className="text-gray-500 mx-5 text-sm pb-10">
@@ -102,11 +102,11 @@ export const Messages = () => {
 
           <div className="mx-5 py-10">
             <h3 className="mx-5 text-gray-500 text-sm">
-              Create an account for your employee
+              Message Manager Control
             </h3>
-            <Link to="/admin/accounts/add">
-              <button className="m-3 py-3 px-8 text-sm bg-red-600 hover:bg-red-500 rounded text-white">
-                Add New Account
+            <Link to="#">
+              <button className="m-3 py-3 px-8 text-sm bg-red-600 hover:bg-red-500 rounded text-white hover:text-black">
+                Recycle Bin
               </button>
             </Link>
           </div>

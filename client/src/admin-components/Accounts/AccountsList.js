@@ -20,24 +20,12 @@ export const AccountsList = () => {
     <tr key={index}>
 
       <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm text-gray-900">{account.username}</div>
-      </td>
-
-      <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm text-gray-900">
-          {account.password.replace(/./g, "*")}
-        </div>
-      </td>
-
-      <td className="px-6 py-4 whitespace-nowrap">
         <div className="text-sm text-gray-900">{account.email}</div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm text-gray-900">{account.lastname}</div>
+        <div className="text-sm text-gray-900">{account.firstname}&nbsp;{account.lastname}</div>
       </td>
-      <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm text-gray-900">{account.firstname}</div>
-      </td>
+
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="text-sm text-gray-900">{account.position}</div>
       </td>
@@ -62,13 +50,14 @@ export const AccountsList = () => {
       <td className="px-6 py-4 whitespace-nowrap  text-sm font-medium">
         <Link
           to={`/admin/accounts/edit/${account._id}`}
-          className="text-indigo-600 hover:text-indigo-900"
         >
+          <button className="mr-1 text-white py-1 px-3 bg-green-600 rounded-sm hover:bg-green-500 hover:text-black">
           Edit
+        </button>
         </Link>
-        <span className="ml-2 text-red-600 hover:text-red-900">
-          Delete
-        </span>
+        <button className="ml-1 text-white py-1 px-3 bg-red-600 rounded-sm hover:bg-red-500 hover:text-black">
+          Trash
+        </button>
       </td>
     </tr>
   ));
