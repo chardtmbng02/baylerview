@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Room1 from "../../assets/room-images/room-1.png";
+import { Link } from "react-router-dom";
 
 export const HomeFeaturedRoom = () => {
   const [rooms, setRooms] = useState([]);
@@ -57,12 +58,14 @@ export const HomeFeaturedRoom = () => {
             </p>
           </div>
           <div className="px-6 pt-2 pb-2 mb-2">
-            <button
+            
+            <Link to="/check-reservation"><button
               type="button"
               className="py-3 px-8 text-sm bg-red-600 hover:bg-red-500 rounded text-white"
             >
               Book Now
             </button>
+            </Link>
           </div>
         </div>
       </div>

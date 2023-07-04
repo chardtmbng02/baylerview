@@ -2,7 +2,6 @@ import { useTitle } from "../Hooks/useTitle";
 import { useEffect } from "react";
 import { NavigationBar } from "../components/Navigation/NavigationBar";
 import { Footer } from "../components/Footer/Footer";
-import { RoomReservationForm } from "../components/ReservationSection/RoomReservationSection";
 import { RoomResults } from "../components/RoomSection/Search/RoomResults";
 
 export const BookNow = () => {
@@ -13,8 +12,7 @@ export const BookNow = () => {
   return (
     <>
       <NavigationBar />
-      <div className="mt-20">&nbsp;</div>
-      <RoomReservationForm />
+      <div className="mt-20 bg-yellow-100">&nbsp;</div>
       <RoomResults />
       <Footer />
     </>

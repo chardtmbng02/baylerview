@@ -41,6 +41,7 @@ import { DeleteMessage } from "./admin-components/Messages/DeleteMessage";
 import { ReadMessage } from "./admin-components/Messages/ReadMessage";
 import { UpdateNewsletter } from "./admin-components/Newsletters/UpdateNewsletter";
 import { UpdateTestimonial } from "./admin-components/Testimonials/UpdateTestimonial";
+import { ConfirmReserved } from "./pages/ConfirmReserved";
 
 
 
@@ -51,6 +52,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/check-reservation" element={<BookNow />} />
+          <Route path="/check-reservation/reserve" element={<ConfirmReserved />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/location" element={<Location />} />
