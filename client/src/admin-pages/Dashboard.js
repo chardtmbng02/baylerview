@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 import Logo from "../assets/Logo/icon.png";
 import { SidebarNav } from "../admin-components/Navigation/SidebarNav";
 import { DashboardCards } from "../admin-components/DashboardCards/DashboardCards";
+// import { FeaturedRoomList } from "../admin-components/Rooms/FeaturedRoomList";
+// import { StandardRoomList } from "../admin-components/Rooms/StandardRoomList";
+import { RoomLists } from "../admin-components/Rooms/RoomLists";
 
 export const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false); //This will be the declarations for toggle of sidebar.
@@ -86,6 +89,14 @@ export const Dashboard = () => {
           </div>
           <div className="overflow-y-auto mx-5">
             <DashboardCards />
+            <div className="mt-10">
+            <RoomLists />
+            </div>
+
+            {/* <div className="mt-10">
+            <StandardRoomList />
+            </div> */}
+            
           </div>
         </div>
       </div>

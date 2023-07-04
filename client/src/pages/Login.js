@@ -58,7 +58,7 @@ export const Login = () => {
   };
 
   return (
-    <div className="bg-red-100 py-10">
+    <div className="bg-red-100 h-screen py-10">
       <div className="max-w-md mx-auto py-40">
         <form
           className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"

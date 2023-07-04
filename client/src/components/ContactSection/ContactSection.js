@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const ContactSection = () => {
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
   const url = "https://baylerview-api.onrender.com/api/contacts";
 
   const [contactmessagedata, setContactMessageData] = useState({
@@ -25,7 +25,7 @@ export const ContactSection = () => {
       })
       .then(() => {
         alert("Your Message was sent Successfully!");
-        Navigate("/");
+        navigate("/");
         
       })
       .catch((error) => {
