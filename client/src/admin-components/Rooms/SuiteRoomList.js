@@ -16,7 +16,7 @@ export const SuiteRoomList = () => {
   }, []);
 
   const displayFeaturedRooms = rooms
-    .filter((room) => room.room_type === "Suite") //####### change room type here #######
+    .filter((room) => room.room_type === "suite") //####### change room type here #######
     .map((room, index) => (
         
         <tr key={index}>
@@ -41,7 +41,7 @@ export const SuiteRoomList = () => {
           Open
         </button>
         <button className="ml-1 text-white py-1 px-3 bg-red-600 hover:bg-red-500 rounded-sm hover:text-black">
-          Trash
+          Delete
         </button>
       </td>
     </tr>
