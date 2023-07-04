@@ -41,6 +41,30 @@ router.post('/', async (req, res) => {
     }
   });
 
+  // Update an Account
+router.put("/:id", async (req, res) => {
+  try {
+    const updatedNewsletter = await Newsletter.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: req.body, // Update the fields with the request body data
+      },
+      { new: true } // Return the updated document
+    );
+
+    if (!updatedNewsletter) {
+      return res
+        .status(404)
+        .json({ success: false, error: "Account not found" });
+    }
+
+    res.json({ success: true, data: updatedNewsletter });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, error: "Something went wrong" });
+  }
+});
+
   //Delete an Newsletter
 router.delete('/:id', async (req, res) => {
   try {

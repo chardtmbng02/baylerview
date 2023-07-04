@@ -1,12 +1,12 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Logo from "../assets/Logo/icon.png";
-import { SidebarNav } from "../admin-components/Navigation/SidebarNav";
+import Logo from "../../assets/Logo/icon.png";
+import { SidebarNav } from "../../admin-components/Navigation/SidebarNav";
 import { Link } from "react-router-dom";
-import { AddRoom } from "../admin-components/Rooms/AddRoom"; 
+import { RoomLists } from "../../admin-components/Rooms/RoomLists";
 
-export const AddRooms = () => {
+export const AllRoomLists = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false); //This will be the declarations for toggle of sidebar.
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -51,7 +51,7 @@ export const AddRooms = () => {
           } flex flex-col w-64 bg-gray-800`}
         >
           <div className="flex items-center justify-center h-16 bg-gray-900">
-            <img src={Logo} alt="" className="admin-logo" />
+            <img src={Logo} alt="featured_rooms" className="admin-logo" />
             <span className="text-white font-bold uppercase">
               Bay-Ler View Admin
             </span>
@@ -88,33 +88,29 @@ export const AddRooms = () => {
 
           <div>
             <h1 className="text-gray-500 mx-5 pt-10 text-xl font-semibold">
-              Rooms Manager | <span className="text-red-600">Created Rooms</span> 
+              Rooms Manager&nbsp;|&nbsp;
+              <span className="text-red-600">All Rooms</span>
             </h1>
             <h3 className="text-gray-500 mx-5 text-sm pb-10">
-              You can manage room records here. Create, Read, Update, and
-              Delete.
+              You can manage all room records here.
             </h3>
           </div>
           <div className="overflow-y-auto mx-5">
-            <AddRoom />
+            <RoomLists />
           </div>
 
           <div className="mx-5 py-10">
             <h3 className="mx-5 text-gray-500 text-sm">
-              Account Manager Control
+              Room Manager Control
             </h3>
-            <Link to="/admin/accounts/add"><button className="m-3 py-3 px-8 text-sm bg-green-600 hover:bg-green-500 hover:text-black rounded text-white">
-              Add New Room
-            </button>
+            <Link to="#">
+              <button className="m-3 py-3 px-8 text-sm bg-red-600 hover:bg-red-500 rounded text-white hover:text-black">
+                Recycle Bin
+              </button>
             </Link>
-            <button className="m-3 py-3 px-8 text-sm bg-red-600 hover:bg-red-500 rounded text-white hover:text-black">
-              Recycle Bin
-            </button> 
           </div>
         </div>
       </div>
-
     </>
   );
 };
-

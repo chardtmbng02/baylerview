@@ -1,12 +1,13 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 export const MessagesList = () => {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
     axios
-      .get("https://baylerview-api.onrender.com/api/contacts")
+      .get('https://baylerview-api.onrender.com/api/contacts')
       .then((response) => {
         setMessages(response.data.data);
       })
@@ -17,7 +18,6 @@ export const MessagesList = () => {
 
   const contactmessages = messages.map((message, index) => (
     <tr key={index}>
-
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="text-sm text-gray-900">{message.name}</div>
       </td>
@@ -28,16 +28,20 @@ export const MessagesList = () => {
         <div className="text-sm text-gray-900">{message.message_status}</div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm text-gray-900">{new Date(message.date).toLocaleString()}</div>
+        <div className="text-sm text-gray-900">
+          {new Date(message.date).toLocaleString()}
+        </div>
       </td>
-      
+
       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-      <button className="mr-1 text-white py-1 px-3 bg-green-600 rounded-sm hover:bg-green-500 hover:text-black">
+        <button className="mr-1 text-white py-1 px-3 bg-green-600 rounded-sm hover:bg-green-500 hover:text-black">
           Open
         </button>
-        <button className="ml-1 text-white py-1 px-3 bg-red-600 rounded-sm hover:bg-red-500 hover:text-black">
-          Trash
-        </button>
+        <Link to={`/admin/messages/delete/${message._id}`}>
+          <button className="ml-1 text-white py-1 px-3 bg-red-600 rounded-sm hover:bg-red-500 hover:text-black">
+            Trash
+          </button>
+        </Link>
       </td>
     </tr>
   ));
@@ -48,7 +52,6 @@ export const MessagesList = () => {
         <table className=" min-w-full divide-y divide-gray-200 overflow-x-auto">
           <thead className="bg-gray-50">
             <tr>
-
               <th
                 scope="col"
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
@@ -65,7 +68,7 @@ export const MessagesList = () => {
                 scope="col"
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
-               Message Status
+                Message Status
               </th>
               <th
                 scope="col"
@@ -79,7 +82,6 @@ export const MessagesList = () => {
               >
                 actions
               </th>
-              
             </tr>
           </thead>
 

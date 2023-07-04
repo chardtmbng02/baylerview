@@ -32,7 +32,14 @@ import { FeaturedRoomLists } from "./admin-pages/Rooms/FeaturedRoomLists";
 import { StandardRoomLists } from "./admin-pages/Rooms/StandardRoomLists";
 import { DeluxeRoomLists } from "./admin-pages/Rooms/DeluxeRoomLists";
 import { SuiteRoomLists } from "./admin-pages/Rooms/SuiteRoomLists";
-import { AddRoom } from "./admin-pages/AddRooms";
+import { AddRooms } from "./admin-pages/AddRooms";
+import { Reservations } from "./admin-pages/Reservations";
+import { AllRoomLists } from "./admin-pages/Rooms/AllRoomLists";
+
+import { DeleteTestimonial } from "./admin-components/Testimonials/DeleteTestimonial";
+import { DeleteMessage } from "./admin-components/Messages/DeleteMessage";
+
+
 
 function App() {
   return (
@@ -62,13 +69,20 @@ function App() {
           <Route path="/admin/messages" element={<Messages />} />
           <Route path="/admin/newsletters" element={<Newsletters />} />
           <Route path="/admin/testimonials" element={<Testimonials />} />
+          <Route path="/admin/reservations" element={<Reservations />} />
 
 
-          <Route path="/admin/rooms/add" element={<AddRoom />} />
+          <Route path="/admin/rooms/add" element={<AddRooms />} />
+          <Route path="/admin/rooms" element={<AllRoomLists/>} />
           <Route path="/admin/rooms/featured" element={<FeaturedRoomLists />} />
           <Route path="/admin/rooms/standard" element={<StandardRoomLists />} />
           <Route path="/admin/rooms/deluxe" element={<DeluxeRoomLists />} />
           <Route path="/admin/rooms/suite" element={<SuiteRoomLists />} />
+
+          <Route path="/admin/testimonials/delete/:id" element={<DeleteTestimonial />}
+          />
+          <Route path="/admin/messages/delete/:id" element={<DeleteMessage />}
+          />
 
 
 

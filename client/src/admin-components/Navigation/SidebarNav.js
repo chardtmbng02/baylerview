@@ -35,6 +35,7 @@ export const SidebarNav = () => {
           </Link>
 
           <span className="text-gray-500 text-sm">Manage</span>
+
           <Link to="#">
             <span
               className="inline-block text-white hover:text-red-500 my-2 w-full"
@@ -49,6 +50,7 @@ export const SidebarNav = () => {
               </span>
             </span>
           </Link>
+          
           {isDropdownOpen && (
             <div className="pl-8">
               <Link to="/admin/rooms/featured">

@@ -43,6 +43,30 @@ router.post('/', async (req, res) => {
     }
   });
 
+  // Update an Account
+router.put("/:id", async (req, res) => {
+  try {
+    const updatedContact = await Contact.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: req.body, // Update the fields with the request body data
+      },
+      { new: true } // Return the updated document
+    );
+
+    if (!updatedContact) {
+      return res
+        .status(404)
+        .json({ success: false, error: "Record not found" });
+    }
+
+    res.json({ success: true, data: updatedContact });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, error: "Something went wrong" });
+  }
+});
+
   //Delete a Message
 router.delete('/:id', async (req, res) => {
   try {

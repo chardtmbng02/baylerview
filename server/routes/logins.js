@@ -46,35 +46,28 @@ router.post("/add", async (req, res) => {
   }
 });
 
-// Update Account
-router.put('/:id', (req, res) => {
-  const userId = req.params.id; // Assuming user ID is provided in the URL
-  // Extract updated user data from request body
-  const {
-    username,
-    password,
-    lastname,
-    firstname,
-    email,
-    position,
-    user_level,
-    account_status
-  } = req.body;
-  
-  const updatedUserData = {
-    username,
-    password,
-    lastname,
-    firstname,
-    email,
-    position,
-    user_level,
-    account_status,
-    date: Date.now()
-  };
+// Update an Account
+router.put("/:id", async (req, res) => {
+  try {
+    const updatedLogin = await Login.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: req.body, // Update the fields with the request body data
+      },
+      { new: true } // Return the updated document
+    );
 
-  // Return a response indicating the success or failure of the update operation
-  res.json({ success: true, message: 'User data updated successfully', data: updatedUserData });
+    if (!updatedLogin) {
+      return res
+        .status(404)
+        .json({ success: false, error: "Account not found" });
+    }
+
+    res.json({ success: true, data: updatedLogin });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, error: "Something went wrong" });
+  }
 });
 
 //Delete an Account
