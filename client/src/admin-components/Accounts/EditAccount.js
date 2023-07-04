@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { Link, Navigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 
 export const EditAccount = () => {
+  const Navigate = useNavigate();
   const { id } = useParams(); // Get the account ID from the URL parameter
   /* const [account, setAccount] = useState(null);*/
   const [successModal, setsuccessModal] = useState(false);
@@ -134,24 +135,25 @@ export const EditAccount = () => {
       alert("Position Field Empty")
       return;  
     } else {
-      //  axios
-      //   .put(`https://baylerview-api.onrender.com/api/logins/${id}`, {
-      //     username: data.username,
-      //     password: data.password,
-      //     lastname: data.lastname,
-      //     firstname: data.firstname,
-      //     email: data.email,
-      //     position: data.position,
-      //     user_level: data.user_level,
-      //     account_status: data.account_status,
-      //   })
-      //   .then((res) => {
-      //     setsuccessModal(true);
-      //     setTimeout(() => {
-      //       setsuccessModal(false);
-      //       Navigate("/admin/accounts");
-      //     }, 3000);
-      //   });
+       axios
+        .put(`https://baylerview-api.onrender.com/api/logins/${id}`, {
+          username: data.username,
+          password: data.password,
+          lastname: data.lastname,
+          firstname: data.firstname,
+          email: data.email,
+          position: data.position,
+          user_level: data.user_level,
+          account_status: data.account_status,
+        })
+        .then((res) => {
+          // setsuccessModal(true);
+          // setTimeout(() => {
+          //   setsuccessModal(false);
+          Navigate("/admin/accounts");
+          // }, 3000);
+          alert("Record Updated");
+        });
 
       console.log(data)
     }

@@ -34,9 +34,11 @@ export const MessagesList = () => {
       </td>
 
       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+      <Link to={`/admin/messages/read/${message._id}`}>
         <button className="mr-1 text-white py-1 px-3 bg-green-600 rounded-sm hover:bg-green-500 hover:text-black">
           Open
         </button>
+        </Link>
         <Link to={`/admin/messages/delete/${message._id}`}>
           <button className="ml-1 text-white py-1 px-3 bg-red-600 rounded-sm hover:bg-red-500 hover:text-black">
             Trash

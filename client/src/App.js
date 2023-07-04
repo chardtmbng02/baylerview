@@ -38,6 +38,7 @@ import { AllRoomLists } from "./admin-pages/Rooms/AllRoomLists";
 
 import { DeleteTestimonial } from "./admin-components/Testimonials/DeleteTestimonial";
 import { DeleteMessage } from "./admin-components/Messages/DeleteMessage";
+import { ReadMessage } from "./admin-components/Messages/ReadMessage";
 
 
 
@@ -81,13 +82,8 @@ function App() {
 
           <Route path="/admin/testimonials/delete/:id" element={<DeleteTestimonial />}
           />
-          <Route path="/admin/messages/delete/:id" element={<DeleteMessage />}
-          />
-
-
-
-         
-
+          <Route path="/admin/messages/delete/:id" element={<DeleteMessage />} />
+          <Route path="/admin/messages/read/:id" element={<ReadMessage />} />
 
           <Route path="/admin/playground" element={<AdminPlayground />} />
 
