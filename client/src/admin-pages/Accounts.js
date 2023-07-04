@@ -107,9 +107,7 @@ export const Accounts = () => {
               Add New Account
             </button>
             </Link>
-            <button className="m-3 py-3 px-8 text-sm bg-red-600 hover:bg-red-500 rounded text-white hover:text-black">
-              Recycle Bin
-            </button> 
+
           </div>
         </div>
       </div>

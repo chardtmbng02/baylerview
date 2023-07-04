@@ -1,4 +1,4 @@
-import { useParams, Link, useNavigate, Navigate } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -23,29 +23,11 @@ export const UpdateTestimonial = () => {
   }, [id]);
 
   const handleApprove = async () => {
-    // try {
-    //   await axios.update(
-    //     `https://baylerview-api.onrender.com/api/contacts/${id}`
-    //   );
-    //   alert('Record Successfully Deleted!');
-    //   navigate('/admin/messages'); // Navigate back to the accounts page after successful deletion
-    // } catch (error) {
-    //   console.log(error);
-    // }
     alert("Dapat mag close yung form tapos yung status maging Inactive");
     navigate('/admin/testimonials');
   };
 
   const handleReject = async () => {
-    // try {
-    //   await axios.update(
-    //     `https://baylerview-api.onrender.com/api/contacts/${id}`
-    //   );
-    //   alert('Record Successfully Deleted!');
-    //   navigate('/admin/messages'); // Navigate back to the accounts page after successful deletion
-    // } catch (error) {
-    //   console.log(error);
-    // }
     alert("Dapat mag close yung form tapos yung status maging Inactive");
     navigate('/admin/testimonials');
   };

@@ -1,4 +1,4 @@
-import Profile1 from '../../assets/dev-team/dev-image4.png';
+import Profile1 from '../../assets/icons/testimonial.png';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 

@@ -25,7 +25,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-//Add a room
+//Add a testimonial
 router.post('/', async (req, res) => {
     const testimonial = new Testimonial({
       image_url: req.body.image_url,
@@ -45,6 +45,30 @@ router.post('/', async (req, res) => {
       res.status(500).json({ success: false, error: 'Something Went Wrong' });
     }
   });
+
+  // Update an Account
+router.put("/:id", async (req, res) => {
+  try {
+    const updatedTestimonial = await Testimonial.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: req.body, // Update the fields with the request body data
+      },
+      { new: true } // Return the updated document
+    );
+
+    if (!updatedTestimonial) {
+      return res
+        .status(404)
+        .json({ success: false, error: "Record not found" });
+    }
+
+    res.json({ success: true, data: updatedTestimonial });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, error: "Something went wrong" });
+  }
+});
 
   //Delete a testimonial
 router.delete('/:id', async (req, res) => {

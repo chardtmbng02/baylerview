@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../assets/Logo/icon.png";
 import { SidebarNav } from "../admin-components/Navigation/SidebarNav";
-import { Link } from "react-router-dom";
 import { MessagesList } from "../admin-components/Messages/MessagesList";
 
 export const Messages = () => {
@@ -92,23 +91,11 @@ export const Messages = () => {
               <span className="text-red-600">List of Messages</span>
             </h1>
             <h3 className="text-gray-500 mx-5 text-sm pb-10">
-              You can manage account records here. Create, Read, Update, and
-              Delete.
+              You can manage messages here.
             </h3>
           </div>
           <div className="overflow-y-auto mx-5">
             <MessagesList />
-          </div>
-
-          <div className="mx-5 py-10">
-            <h3 className="mx-5 text-gray-500 text-sm">
-              Message Manager Control
-            </h3>
-            <Link to="#">
-              <button className="m-3 py-3 px-8 text-sm bg-red-600 hover:bg-red-500 rounded text-white hover:text-black">
-                Recycle Bin
-              </button>
-            </Link>
           </div>
         </div>
       </div>

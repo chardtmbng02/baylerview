@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../assets/Logo/icon.png";
 import { SidebarNav } from "../admin-components/Navigation/SidebarNav";
-import { Link } from "react-router-dom";
 import { NewslettersList } from "../admin-components/Newsletters/NewslettersList";
 
 export const Newsletters = () => {
@@ -100,14 +99,6 @@ export const Newsletters = () => {
           </div>
 
           <div className="mx-5 py-10">
-            <h3 className="mx-5 text-gray-500 text-sm">
-              Newsletter Manager Control
-            </h3>
-            <Link to="#">
-              <button className="m-3 py-3 px-8 text-sm bg-red-600 hover:bg-red-500 rounded text-white hover:text-black">
-                Recycle Bin
-              </button>
-            </Link>
           </div>
         </div>
       </div>

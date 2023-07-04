@@ -1,4 +1,4 @@
-import { useParams, Link, useNavigate, Navigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -18,21 +18,25 @@ export const ReadMessage = () => {
         console.log(error);
       }
     };
-
+    
     fetchData();
   }, [id]);
 
+console.log(messages);
+const usermessage = messages.message;
+
   const handleConfirmUpdate = async () => {
-    // try {
-    //   await axios.update(
-    //     `https://baylerview-api.onrender.com/api/contacts/${id}`
-    //   );
-    //   alert('Record Successfully Deleted!');
-    //   navigate('/admin/messages'); // Navigate back to the accounts page after successful deletion
-    // } catch (error) {
-    //   console.log(error);
-    // }
-    alert("Dapat mag close yung form tapos yung Message_status maging Read");
+    try {
+      await axios.put(
+        `https://baylerview-api.onrender.com/api/contacts/${id}`,
+        {
+          message_status: "Read"
+        }
+      );
+      navigate('/admin/messages');
+    } catch (error) {
+      console.log(error);
+    }
     navigate('/admin/messages');
   };
 
@@ -58,7 +62,7 @@ export const ReadMessage = () => {
                 </h2>
 
                 <p className="text-gray-500">
-                  Are you sure you would like to do this?
+                  {usermessage}
                 </p>
               </div>
             </div>
@@ -72,7 +76,7 @@ export const ReadMessage = () => {
                   <button
                     type="submit"
                     onClick={handleConfirmUpdate}
-                    className="hover:text-black inline-flex items-center justify-center py-1 gap-1 font-medium rounded-lg border transition-colors outline-none focus:ring-offset-2 focus:ring-2 focus:ring-inset min-h-[2.25rem] px-4 text-sm text-white shadow focus:ring-white border-transparent bg-green-600 hover:bg-green-500 focus:bg-red-700 focus:ring-offset-red-700"
+                    className="hover:text-black inline-flex items-center justify-center py-1 gap-1 font-medium rounded-lg border transition-colors outline-none px-4 text-sm text-white shadow focus:ring-white border-transparent bg-green-600 hover:bg-green-500"
                   >
                     <span className="flex items-center gap-1">
                       <span className="">OK</span>

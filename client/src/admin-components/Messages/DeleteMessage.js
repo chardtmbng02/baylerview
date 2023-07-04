@@ -92,7 +92,7 @@ export const DeleteMessage = () => {
               <div className="px-6 py-2">
                 <div className="grid gap-2 grid-cols-[repeat(auto-fit,minmax(0,1fr))]">
                   <Link
-                    className="bg-red-600 hover:text-black inline-flex items-center justify-center py-1 gap-1 font-medium rounded-lg border transition-colors outline-none focus:ring-offset-2 focus:ring-2 focus:ring-inset min-h-[2.25rem] px-4 text-sm text-white bg-white border-gray-300 hover:bg-red-500 focus:ring-primary-600 focus:text-primary-600 focus:bg-primary-50 focus:border-primary-600"
+                    className="hover:text-black inline-flex items-center justify-center py-1 gap-1 font-medium rounded-lg border transition-colors outline-none px-4 text-sm text-white shadow focus:ring-white border-transparent bg-red-600 hover:bg-red-500"
                     to="/admin/messages"
                   >
                     <span className="flex items-center gap-1">
@@ -103,7 +103,7 @@ export const DeleteMessage = () => {
                   <button
                     type="submit"
                     onClick={handleConfirmDelete}
-                    className="hover:text-black inline-flex items-center justify-center py-1 gap-1 font-medium rounded-lg border transition-colors outline-none focus:ring-offset-2 focus:ring-2 focus:ring-inset min-h-[2.25rem] px-4 text-sm text-white shadow focus:ring-white border-transparent bg-green-600 hover:bg-green-500 focus:bg-red-700 focus:ring-offset-red-700"
+                    className="hover:text-black inline-flex items-center justify-center py-1 gap-1 font-medium rounded-lg border transition-colors outline-none px-4 text-sm text-white shadow focus:ring-white border-transparent bg-green-600 hover:bg-green-500"
                   >
                     <span className="flex items-center gap-1">
                       <span className="">Confirm</span>

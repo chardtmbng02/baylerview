@@ -41,7 +41,7 @@ export const TestimonialsList = () => {
         </Link>
         <Link to={`/admin/testimonials/delete/${testimonial._id}`}>
           <button className="ml-1 text-white py-1 px-3 bg-red-600 rounded-sm hover:bg-red-500 hover:text-black">
-            Trash
+            Delete
           </button>
         </Link>
       </td>

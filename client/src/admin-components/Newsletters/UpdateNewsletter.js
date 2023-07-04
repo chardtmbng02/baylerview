@@ -1,10 +1,13 @@
-import { useParams, Link, useNavigate, Navigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 export const UpdateNewsletter = () => {
   const { id } = useParams(); // Get the account ID from the URL parameter
   const [newsletter, setNewsletters] = useState([]);
+  const [data] = useState({
+    subscription: "Inactive",
+  });
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -23,17 +26,17 @@ export const UpdateNewsletter = () => {
   }, [id]);
 
   const handleConfirmUpdate = async () => {
-    // try {
-    //   await axios.update(
-    //     `https://baylerview-api.onrender.com/api/contacts/${id}`
-    //   );
-    //   alert('Record Successfully Deleted!');
-    //   navigate('/admin/messages'); // Navigate back to the accounts page after successful deletion
-    // } catch (error) {
-    //   console.log(error);
-    // }
-    alert("Dapat mag close yung form tapos yung subsciption maging Inactive");
-    navigate('/admin/newsletters');
+    try {
+       await axios.put(
+        `https://baylerview-api.onrender.com/api/newsletters/${id}`,
+        {
+          subscription: data.subscription,
+        }
+      );
+      navigate("/admin/newsletters");
+    } catch (error) {
+      console.error("Error updating record:", error);
+    }
   };
 
   return (
@@ -77,12 +80,10 @@ export const UpdateNewsletter = () => {
                   className="text-xl font-bold tracking-tight"
                   id="page-action.heading"
                 >
-                 Unsubscribe 
+                  Unsubscribe
                 </h2>
 
-                <p className="text-gray-500">
-                {newsletter.email}
-                </p>
+                <p className="text-gray-500">{newsletter.email}</p>
               </div>
             </div>
 
@@ -91,7 +92,6 @@ export const UpdateNewsletter = () => {
 
               <div className="px-6 py-2">
                 <div className="grid gap-2 grid-cols-[repeat(auto-fit,minmax(0,1fr))]">
-
                   <button
                     type="submit"
                     onClick={handleConfirmUpdate}

@@ -23,7 +23,7 @@ export const NewsletterSection = () => {
     axios
       .post(url, data, { headers })
       .then((response) => {
-        // Handle the response data
+        alert("You are now subscribed to our newsletter.");
         console.log(response.data);
       })
       .catch((error) => {
