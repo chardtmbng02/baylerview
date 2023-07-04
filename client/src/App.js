@@ -40,6 +40,7 @@ import { DeleteTestimonial } from "./admin-components/Testimonials/DeleteTestimo
 import { DeleteMessage } from "./admin-components/Messages/DeleteMessage";
 import { ReadMessage } from "./admin-components/Messages/ReadMessage";
 import { UpdateNewsletter } from "./admin-components/Newsletters/UpdateNewsletter";
+import { UpdateTestimonial } from "./admin-components/Testimonials/UpdateTestimonial";
 
 
 
@@ -86,6 +87,7 @@ function App() {
           <Route path="/admin/messages/delete/:id" element={<DeleteMessage />} />
           <Route path="/admin/messages/read/:id" element={<ReadMessage />} />
           <Route path="/admin/newsletters/update/:id" element={<UpdateNewsletter />} />
+          <Route path="/admin/testimonials/manage/:id" element={<UpdateTestimonial />} />
 
           <Route path="/admin/playground" element={<AdminPlayground />} />
 

@@ -34,9 +34,11 @@ export const TestimonialsList = () => {
       </td>
 
       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+      <Link to={`/admin/testimonials/manage/${testimonial._id}`}>
         <button className="mr-1 text-white py-1 px-3 bg-green-600 hover:bg-green-500 rounded-sm hover:text-black">
-          Open
+          Manage
         </button>
+        </Link>
         <Link to={`/admin/testimonials/delete/${testimonial._id}`}>
           <button className="ml-1 text-white py-1 px-3 bg-red-600 rounded-sm hover:bg-red-500 hover:text-black">
             Trash

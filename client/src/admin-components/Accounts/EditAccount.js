@@ -242,7 +242,7 @@ export const EditAccount = () => {
                   Password
                 </span>
                 <input
-                  type="text"
+                  type="password"
                   name="password"
                   onChange={(e) => handle(e)}
                   id="password"
@@ -258,7 +258,7 @@ export const EditAccount = () => {
                   Verify Password
                 </span>
                 <input
-                  type="text"
+                  type="password"
                   name="vpassword"
                   onChange={(e) => handle(e)}
                   id="vpassword"
