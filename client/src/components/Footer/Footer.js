@@ -22,10 +22,10 @@ export const Footer = () => {
         <div className="flex flex-col gap-6">
           <label className="text-gray-600 font-bold uppercase">Site Map</label>
           <ul className="flex flex-col gap-6 text-gray-500">
-            <li>Recipes & Menus</li>
-            <li>Ingredients</li>
-            <li>Nutrients</li>
-            <li>Meals</li>
+            <li>Tourist Spots</li>
+            <li>Attractions</li>
+            <li>History</li>
+            <li>Events</li>
           </ul>
         </div>
         <div className="flex flex-col gap-6">
@@ -71,9 +71,18 @@ export const Footer = () => {
                 Our Dev Team
               </Link>
             </li>
-            <li>Bon Appetit</li>
-            <li>Gourmet</li>
-            <li>Status</li>
+            <li><Link
+                to="https://github.com/chardtmbng02/baylerview"
+                className="text-gray-500 hover:text-red-600"
+              >Capstone Repo</Link></li>
+            <li><Link
+                to="https://bayler-view-hotels.netlify.app/index.html"
+                className="text-gray-500 hover:text-red-600"
+              >Mini Project 1</Link></li>
+            <li><Link
+                to="https://cmktm7.vercel.app/"
+                className="text-gray-500 hover:text-red-600"
+              >Mini Project 2</Link></li>
           </ul>
         </div>
       </div>

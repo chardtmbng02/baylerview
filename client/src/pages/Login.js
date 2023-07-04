@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export const Login = () => {
   const [username, setUsername] = useState("");
@@ -105,11 +105,19 @@ export const Login = () => {
 
           <div className="flex items-center justify-between">
             <button
-              className="py-2 px-4 text-sm bg-red-600 hover:bg-red-500 rounded text-white"
+              className="py-2 px-4 text-sm bg-red-600 hover:bg-red-500 hover:text-black rounded text-white"
               type="submit"
             >
               Sign In
             </button>
+            <Link to="/">
+            <button
+              className="py-2 px-4 text-sm bg-green-600 hover:bg-green-500 hover:text-black rounded text-white"
+              type="submit"
+            >
+             Return to Bay-Ler View Website
+            </button>
+            </Link>
           </div>
         </form>
 

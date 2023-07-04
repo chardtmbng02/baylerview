@@ -42,7 +42,7 @@ export const RoomLists = () => {
           Open
         </button>
         <button className="ml-1 text-white py-1 px-3 bg-red-600 hover:bg-red-500 rounded-sm hover:text-black">
-          Trash
+          Delete
         </button>
       </td>
     </tr>

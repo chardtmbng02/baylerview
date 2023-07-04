@@ -25,7 +25,7 @@ export const ContactSection = () => {
       })
       .then(() => {
         alert("Your Message was sent Successfully!");
-        navigate("/");
+        navigate("/experiences");
         
       })
       .catch((error) => {

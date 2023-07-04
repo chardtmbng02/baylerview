@@ -4,8 +4,6 @@ import { useNavigate } from "react-router-dom";
 import Logo from "../assets/Logo/icon.png";
 import { SidebarNav } from "../admin-components/Navigation/SidebarNav";
 import { DashboardCards } from "../admin-components/DashboardCards/DashboardCards";
-// import { FeaturedRoomList } from "../admin-components/Rooms/FeaturedRoomList";
-// import { StandardRoomList } from "../admin-components/Rooms/StandardRoomList";
 import { RoomLists } from "../admin-components/Rooms/RoomLists";
 
 export const Dashboard = () => {
@@ -92,10 +90,6 @@ export const Dashboard = () => {
             <div className="mt-10">
             <RoomLists />
             </div>
-
-            {/* <div className="mt-10">
-            <StandardRoomList />
-            </div> */}
             
           </div>
         </div>
