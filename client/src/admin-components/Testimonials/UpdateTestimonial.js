@@ -10,10 +10,10 @@ export const UpdateTestimonial = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const testimonialsResponse = await axios.get(
-          `https://baylerview-api.onrender.com/api/testimonial/${id}`
+        const testimonialsRes = await axios.get(
+          `https://baylerview-api.onrender.com/api/testimonials/${id}`
         );
-        setTestimonials(testimonialsResponse.data.data);
+        setTestimonials(testimonialsRes.data.data);
       } catch (error) {
         console.log(error);
       }
@@ -22,15 +22,40 @@ export const UpdateTestimonial = () => {
     fetchData();
   }, [id]);
 
+  console.log(testimonial);
+  console.log(testimonial.testimonial_status);
+
+
   const handleApprove = async () => {
-    alert("Dapat mag close yung form tapos yung status maging Inactive");
+    try {
+      await axios.put(
+        `https://baylerview-api.onrender.com/api/testimonials/${id}`,
+        {
+          testimonial_status: "Approved"
+        }
+      );
+      navigate('/admin/testimonials'); // Navigate back to the accounts page after successful deletion
+    } catch (error) {
+      console.log(error);
+    }
     navigate('/admin/testimonials');
   };
 
   const handleReject = async () => {
-    alert("Dapat mag close yung form tapos yung status maging Inactive");
+    try {
+      await axios.put(
+        `https://baylerview-api.onrender.com/api/testimonials/${id}`,
+        {
+          testimonial_status: "Rejected"
+        }
+      );
+      navigate('/admin/testimonials'); // Navigate back to the accounts page after successful deletion
+    } catch (error) {
+      console.log(error);
+    }
     navigate('/admin/testimonials');
   };
+
 
   return (
     <>
@@ -42,7 +67,7 @@ export const UpdateTestimonial = () => {
 
         <div className="relative w-full cursor-pointer pointer-events-none transition my-auto p-4">
           <div className="w-full py-2 bg-white cursor-default pointer-events-auto relative rounded-xl mx-auto max-w-sm">
-            <Link to="/admin/newsletters">
+            <Link to="/admin/testimonials">
               <button
                 tabIndex="-1"
                 type="button"
@@ -78,6 +103,12 @@ export const UpdateTestimonial = () => {
 
                 <p className="text-gray-500">
                 {testimonial.email}
+                </p>
+                <p className="text-gray-500">
+                {testimonial.message}
+                </p>
+                <p className="text-gray-500">
+                {testimonial.testimonial_status}
                 </p>
               </div>
             </div>
