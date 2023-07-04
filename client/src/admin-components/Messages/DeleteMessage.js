@@ -83,7 +83,6 @@ export const DeleteMessage = () => {
                 <p className="text-gray-500">
                   Are you sure you would like to do this?
                 </p>
-                <input type="text" />
               </div>
             </div>
 

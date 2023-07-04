@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export const NewslettersList = () => {
   const [newsletters, setNewsletters] = useState([]);
@@ -29,9 +30,11 @@ export const NewslettersList = () => {
       </td>
   
       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-        <button className="text-white py-1 px-3 bg-red-600 hover:bg-red-500 rounded-sm hover:text-black">
-          Unsubscribe
+        <Link to={`/admin/newsletters/update/${newsletter._id}`}>
+        <button className="text-white py-1 px-3 bg-green-600 hover:bg-green-500 rounded-sm hover:text-black">
+          Update
         </button>
+        </Link>
       </td>
     </tr>
   ));

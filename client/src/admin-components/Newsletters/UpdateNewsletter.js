@@ -2,18 +2,18 @@ import { useParams, Link, useNavigate, Navigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export const ReadMessage = () => {
+export const UpdateNewsletter = () => {
   const { id } = useParams(); // Get the account ID from the URL parameter
-  const [messages, setMessages] = useState([]);
+  const [newsletter, setNewsletters] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const messagesResponse = await axios.get(
-          `https://baylerview-api.onrender.com/api/contacts/${id}`
+        const newslettersResponse = await axios.get(
+          `https://baylerview-api.onrender.com/api/newsletters/${id}`
         );
-        setMessages(messagesResponse.data.data);
+        setNewsletters(newslettersResponse.data.data);
       } catch (error) {
         console.log(error);
       }
@@ -32,8 +32,8 @@ export const ReadMessage = () => {
     // } catch (error) {
     //   console.log(error);
     // }
-    alert("Dapat mag close yung form tapos yung Message_status maging Read");
-    navigate('/admin/messages');
+    alert("Dapat mag close yung form tapos yung subsciption maging Inactive");
+    navigate('/admin/newsletters');
   };
 
   return (
@@ -46,7 +46,7 @@ export const ReadMessage = () => {
 
         <div className="relative w-full cursor-pointer pointer-events-none transition my-auto p-4">
           <div className="w-full py-2 bg-white cursor-default pointer-events-auto relative rounded-xl mx-auto max-w-sm">
-            <Link to="/admin/messages">
+            <Link to="/admin/newsletters">
               <button
                 tabIndex="-1"
                 type="button"
@@ -77,13 +77,12 @@ export const ReadMessage = () => {
                   className="text-xl font-bold tracking-tight"
                   id="page-action.heading"
                 >
-                  Delete {messages.name}
+                 Unsubscribe 
                 </h2>
 
                 <p className="text-gray-500">
-                  Are you sure you would like to do this?
+                {newsletter.email}
                 </p>
-                <input type="text" />
               </div>
             </div>
 
